@@ -1,0 +1,28 @@
+{
+  "name": "blogged-in",
+  "description": "Blog site using Node.js",
+  "main": "app.js",
+  "authors": [
+    "Ashwin Rangarajan"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Blog",
+    "Node",
+    "js",
+    "Express",
+    "Bootstrap",
+    "Passport"
+  ],
+  "homepage": "https://github.com/AshRangar/blogged-in",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ]
+}
