@@ -1,7 +1,7 @@
 var mongodb = require('mongodb').MongoClient;
 var objectID = require('mongodb').ObjectID;
 
-var url = 'mongodb://localhost:27017/libraryApp';
+var url = 'mongodb://localhost:27017/bloggedin';
 
 var localStrategyController = () => {
     var authenticateLogin = (username, password, done) => {

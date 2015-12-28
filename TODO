@@ -1,0 +1,18 @@
+Login Page
+Login using Email -> encrypted
+Login using Google, Twitter, Facebook
+
+Database
+Create blogs
+Delete blogs (match user)
+Update blogs (match user)
+
+Layouts:
+i. Login Page
+ii. (Home) My Blogs
+iii. Users
+iv. New Blog
+
+Features:
+Create, Delete, Update
+Comments
