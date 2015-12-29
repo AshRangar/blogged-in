@@ -2,15 +2,9 @@ var express = require('express');
 var authRouter = express.Router();
 var passport = require('passport');
 
-var User = require('../models/user.server.model.js');
-
 module.exports = (nav) => {
 
     authRouter.route('/signIn')
-        .all(function (req, res, next) {
-            console.log(req);
-            next();
-        })
         .post(passport.authenticate('local.signin', {
             failureRedirect: '/'
         }), (req, res) => {

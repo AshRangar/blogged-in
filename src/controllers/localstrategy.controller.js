@@ -6,7 +6,6 @@ var localStrategyController = () => {
             username: username
         };
         User.findOne(query, function (error, user) {
-            console.log(user);
             if (user && user.validPassword(req.body.password)) {
                 return done(null, user);
             } else {

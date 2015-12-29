@@ -27,17 +27,15 @@ app.set('view engine', 'ejs');
 
 var nav = [];
 
-//var bookRouter = require('./src/routes/bookRouter.js')(nav);
-//app.use('/Books', bookRouter);
-
 var authRouter = require('./src/routes/auth.server.route.js')(nav);
 app.use('/auth', authRouter);
 
-//var myblogsRouter = require('./src/routes/myblogs.server.route.js')(nav);
-//app.use('/myblogs', myblogsRouter);
-//
+var myRouter = require('./src/routes/my.server.route.js')(nav);
+app.use('/my', myRouter);
+
 //var usersRouter = require('./src/routes/users.server.route.js')(nav);
 //app.use('/users', usersRouter);
+
 app.get('/', (req, res) => {
     res.render('login', {
         title: 'Bloggedin',

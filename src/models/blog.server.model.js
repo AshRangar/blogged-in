@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var blogSchema = {
+var blogSchema = mongoose.Schema({
     authorId: {
         type: Schema.Types.ObjectId,
     },
@@ -11,6 +11,6 @@ var blogSchema = {
     content: {
         type: String
     }
-};
+});
 
 module.exports = mongoose.model('Blog', blogSchema);
