@@ -1,5 +1,3 @@
-Login using Email -> encrypted
-
 Database
 Create blogs
 Delete blogs (match user)
@@ -8,8 +6,9 @@ Update blogs (match user)
 Layouts:
 i. Login Page
 ii. (Home) My Blogs
-iii. Users
-iv. New Blog
+iii. New Blog
+iv. Users
+
 
 Features:
 Create, Delete, Update
