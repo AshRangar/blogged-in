@@ -1,16 +1,16 @@
 {
-    "name": "blogged-in",
-    "version": "1.0.0",
-    "description": "Blog site using Node.js",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/AshRangar/blogged-in.git"
-    },
-    "keywords": [
+  "name": "blogged-in",
+  "version": "1.0.0",
+  "description": "Blog site using Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AshRangar/blogged-in.git"
+  },
+  "keywords": [
     "Blog",
     "Node",
     "js",
@@ -18,33 +18,33 @@
     "Bootstrap",
     "Passport"
   ],
-    "author": "Ashwin Rangarajan",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/AshRangar/blogged-in/issues"
-    },
-    "homepage": "https://github.com/AshRangar/blogged-in#readme",
-    "dependencies": {
-        "body-parser": "^1.14.2",
-        "cookie-parser": "^1.4.0",
-        "ejs": "^2.3.4",
-        "express": "^4.13.3",
-        "express-session": "^1.12.1",
-        "http": "0.0.0",
-        "mongodb": "^2.0.52",
-        "passport": "^0.3.2",
-        "passport-local": "^1.0.0"
-    },
-    "devDependencies": {
-        "gulp": "^3.9.0",
-        "bower": "^1.7.1",
-        "gulp": "^3.9.0",
-        "gulp-inject": "^3.0.0",
-        "gulp-jscs": "^3.0.2",
-        "gulp-jshint": "^2.0.0",
-        "gulp-nodemon": "^2.0.4",
-        "jshint": "^2.8.0",
-        "jshint-stylish": "^2.1.0",
-        "wiredep": "^3.0.0"
-    }
+  "author": "Ashwin Rangarajan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AshRangar/blogged-in/issues"
+  },
+  "homepage": "https://github.com/AshRangar/blogged-in#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.0",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "http": "0.0.0",
+    "mongodb": "^2.0.52",
+    "mongoose": "^4.3.4",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "bower": "^1.7.1",
+    "gulp-inject": "^3.0.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-nodemon": "^2.0.4",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0",
+    "wiredep": "^3.0.0"
+  }
 }

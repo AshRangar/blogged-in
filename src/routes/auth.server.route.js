@@ -47,5 +47,36 @@ module.exports = (nav) => {
             res.json(req.user);
         });
 
+    authRouter.route('/google/callback')
+        .get(passport.authenticate('google', {
+            successRedirect: '/auth/profile',
+            failureRedirect: '/error'
+        }));
+
+    authRouter.route('/google')
+        .get(passport.authenticate('google', {
+            scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']
+        }));
+
+    authRouter.route('/twitter/callback')
+        .get(passport.authenticate('twitter', {
+            successRedirect: '/auth/profile',
+            failureRedirect: '/error'
+        }));
+
+    authRouter.route('/twitter')
+        .get(passport.authenticate('twitter'));
+
+    authRouter.route('/facebook/callback')
+        .get(passport.authenticate('facebook', {
+            successRedirect: '/auth/profile',
+            failureRedirect: '/error'
+        }));
+
+    authRouter.route('/facebook')
+        .get(passport.authenticate('facebook', {
+            scope: ['email']
+        }));
+
     return authRouter;
 };
