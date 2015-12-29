@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/AshRangar/blogged-in#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.0",
     "ejs": "^2.3.4",

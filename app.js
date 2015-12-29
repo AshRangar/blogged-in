@@ -33,6 +33,11 @@ var nav = [];
 var authRouter = require('./src/routes/auth.server.route.js')(nav);
 app.use('/auth', authRouter);
 
+//var myblogsRouter = require('./src/routes/myblogs.server.route.js')(nav);
+//app.use('/myblogs', myblogsRouter);
+//
+//var usersRouter = require('./src/routes/users.server.route.js')(nav);
+//app.use('/users', usersRouter);
 app.get('/', (req, res) => {
     res.render('login', {
         title: 'Bloggedin',

@@ -6,7 +6,8 @@ var localStrategyController = () => {
             username: username
         };
         User.findOne(query, function (error, user) {
-            if (user && user.password === password) {
+            console.log(user);
+            if (user && user.validPassword(req.body.password)) {
                 return done(null, user);
             } else {
                 return done(null, false, {
@@ -19,7 +20,7 @@ var localStrategyController = () => {
     var authenticateSignup = (req, username, password, done) => {
         var user = new User;
         user.username = req.body.username;
-        user.password = req.body.password;
+        user.password = user.generateHash(req.body.password);
         user.email = req.body.email;
         user.displayName = req.body.email;
         user.save(
