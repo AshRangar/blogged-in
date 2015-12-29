@@ -1,28 +1,45 @@
-var mongodb = require('mongodb').MongoClient;
-var objectID = require('mongodb').ObjectID;
-
-var url = 'mongodb://localhost:27017/bloggedin';
+var User = require('../models/user.server.model.js');
 
 var localStrategyController = () => {
-    var authenticateLogin = (username, password, done) => {
-        mongodb.connect(url, (err, db) => {
-            var collection = db.collection('users');
-            collection.findOne({
-                username: username
-            }, (err, result) => {
-                if (result != null && result.password === password) {
-                    done(null, result);
-                } else {
-                    done(null, false, {
-                        message: 'Bad username/password combo'
-                    });
-                }
-            });
+    var authenticateSignin = (req, username, password, done) => {
+        var query = {
+            username: username
+        };
+        User.findOne(query, function (error, user) {
+            if (user && user.password === password) {
+                return done(null, user);
+            } else {
+                return done(null, false, {
+                    message: 'Bad username/password combo'
+                });
+            }
         });
     };
 
+    var authenticateSignup = (req, username, password, done) => {
+        var user = new User;
+        user.username = req.body.username;
+        user.password = req.body.password;
+        user.email = req.body.email;
+        user.displayName = req.body.email;
+        user.save(
+            function (err) {
+                if (!err) {
+                    console.log('Here in signUp Mongoose!');
+                    req.user = user;
+                    return done(null, user);
+                } else {
+                    return done(null, false, {
+                        message: 'Bad username/password combo'
+                    });
+                }
+            }
+        );
+    };
+
     return {
-        authenticateLogin: authenticateLogin
+        authenticateSignin: authenticateSignin,
+        authenticateSingup: authenticateSignup
     };
 };
 
