@@ -8,14 +8,14 @@ module.exports = (nav) => {
         .post(passport.authenticate('local.signin', {
             failureRedirect: '/'
         }), (req, res) => {
-            res.redirect('/auth/profile');
+            res.redirect('/my/blogs');
         });
 
     authRouter.route('/signUp')
         .post(passport.authenticate('local.signup', {
             failureRedirect: '/'
         }), (req, res) => {
-            res.redirect('/auth/profile');
+            res.redirect('/my/blogs');
         });
 
     authRouter.route('/profile')
@@ -32,7 +32,7 @@ module.exports = (nav) => {
 
     authRouter.route('/google/callback')
         .get(passport.authenticate('google', {
-            successRedirect: '/auth/profile',
+            successRedirect: '/my/blogs',
             failureRedirect: '/error'
         }));
 
@@ -43,7 +43,7 @@ module.exports = (nav) => {
 
     authRouter.route('/twitter/callback')
         .get(passport.authenticate('twitter', {
-            successRedirect: '/auth/profile',
+            successRedirect: '/my/blogs',
             failureRedirect: '/error'
         }));
 
@@ -52,7 +52,7 @@ module.exports = (nav) => {
 
     authRouter.route('/facebook/callback')
         .get(passport.authenticate('facebook', {
-            successRedirect: '/auth/profile',
+            successRedirect: '/my/blogs',
             failureRedirect: '/error'
         }));
 
