@@ -9,7 +9,7 @@ module.exports = (nav) => {
             if (req.user) {
                 next();
             } else {
-                //                next();
+                //next();
                 res.redirect('/');
             }
         })
@@ -20,7 +20,14 @@ module.exports = (nav) => {
             var blog = new Blog;
             blog.title = req.body.title;
             blog.content = req.body.content;
-            console.log(req.body);
+            //            blog.authorId = req.user._id;
+
+            if (req.user)
+                blog.authorId = req.user._id || '568216c279df5f98015181af';
+            else
+                blog.authorId = '568216c279df5f98015181af';
+
+            console.log(blog);
 
             blog.save((err) => {
                 //Needs to print the error!
@@ -31,6 +38,61 @@ module.exports = (nav) => {
                 res.redirect('/my/newblog');
             });
         });
+
+    myRouter.route('/blogs')
+        .all(function (req, res, next) {
+            if (req.user) {
+                next();
+            } else {
+                //next();
+                res.redirect('/');
+            }
+        })
+        .get(function (req, res) {
+            console.log(req.user._id);
+            Blog.find({
+                "authorId": req.user._id
+            }, function (err, blogs) {
+                if (!err) {
+                    console.log(blogs);
+                    res.render('my/index', {
+                        title: 'Bloggedin',
+                        caption: 'Powered by Node.js',
+                        copyright: 'ASHw.xyz',
+                        blogs: blogs
+                    });
+                    //                    res.json(blogs);
+                } else {
+                    res.send('Error!')
+                }
+            });
+        });
+
+    myRouter.route('/blogs/:id')
+        .all(function (req, res, next) {
+            if (req.user) {
+                next();
+            } else {
+                next();
+                //res.redirect('/');
+            }
+        })
+        .get(function (req, res, next) {
+            Blog.findById(req.params.id, function (err, blog) {
+                if (!err) {
+                    console.log(blog);
+                    res.render('my/post', {
+                        title: 'Bloggedin',
+                        caption: 'Powered by Node.js',
+                        copyright: 'ASHw.xyz',
+                        blog: blog
+                    });
+                    //                    res.json(blogs);
+                } else {
+                    res.send('Error!')
+                }
+            });
+        })
 
     return myRouter;
 };
