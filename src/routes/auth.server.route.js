@@ -18,6 +18,12 @@ module.exports = (nav, info) => {
             res.redirect('/my/blogs');
         });
 
+    authRouter.route('/signOut')
+        .get(function (req, res) {
+            req.logout();
+            res.redirect('/');
+        });
+
     authRouter.route('/profile')
         .all((req, res, next) => {
             if (!req.user) {
