@@ -10,11 +10,12 @@ module.exports = (nav, info) => {
         .get(function (req, res) {
             User.find({}, function (err, users) {
                 res.render('userslist', {
+                    nav: nav,
                     title: info.title,
                     caption: info.caption,
                     copyright: info.copyright,
                     users: users
-                })
+                });
             });
         });
 
@@ -27,6 +28,7 @@ module.exports = (nav, info) => {
             Blog.find(query, function (err, blogs) {
                 if (!err) {
                     res.render('blogs', {
+                        nav: nav,
                         title: info.title,
                         caption: info.caption,
                         copyright: info.copyright,

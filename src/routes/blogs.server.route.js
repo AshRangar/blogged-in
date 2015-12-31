@@ -10,6 +10,7 @@ module.exports = (nav, info) => {
                 if (!err) {
                     console.log(blog);
                     res.render('my/post', {
+                        nav: nav,
                         title: info.title,
                         caption: info.caption,
                         copyright: info.copyright,

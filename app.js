@@ -24,8 +24,34 @@ require('./src/config/passport.js')(app);
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
+//, 'My Posts', , 'All Users', 'All Posts', 'Logout'
+var nav = [
+    {
+        item: 'Home',
+        link: '/'
+    },
+    {
+        item: 'My Posts',
+        link: '/my/blogs/'
+    },
+    {
+        item: 'New Post',
+        link: '/my/newblog'
+    },
+    {
+        item: 'All Users',
+        link: '/users/'
+    },
+    {
+        item: 'All Posts',
+        link: '/blogs/'
+    },
+    {
+        item: 'Logout',
+        link: '/auth/signout/'
+    }
+];
 
-var nav = [];
 var info = {
     title: 'Bloggedin',
     caption: 'Powered by Node.js',
@@ -46,6 +72,7 @@ app.use('/blogs', blogsRouter);
 
 app.get('/', (req, res) => {
     res.render('login', {
+        nav: nav,
         title: info.title,
         caption: info.caption,
         copyright: info.copyright,

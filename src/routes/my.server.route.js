@@ -15,7 +15,12 @@ module.exports = (nav, info) => {
             }
         })
         .get(function (req, res) {
-            res.render('newblog');
+            res.render('newblog', {
+                nav: nav,
+                title: info.title,
+                caption: info.caption,
+                copyright: info.copyright
+            });
         })
         .post(function (req, res) {
             var blog = new Blog;
@@ -46,11 +51,12 @@ module.exports = (nav, info) => {
         .get(function (req, res) {
             console.log(req.user._id);
             Blog.find({
-                "authorId": req.user._id
+                'authorId': req.user._id
             }, function (err, blogs) {
                 if (!err) {
                     console.log(blogs);
                     res.render('blogs', {
+                        nav: nav,
                         title: info.title,
                         caption: info.caption,
                         copyright: info.copyright,
@@ -58,7 +64,7 @@ module.exports = (nav, info) => {
                     });
                     //                    res.json(blogs);
                 } else {
-                    res.send('Error!')
+                    res.send('Error!');
                 }
             });
         });
