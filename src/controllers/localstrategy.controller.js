@@ -21,7 +21,7 @@ var localStrategyController = () => {
         user.username = req.body.username;
         user.password = user.generateHash(req.body.password);
         user.email = req.body.email;
-        user.displayName = req.body.email;
+        user.displayName = req.body.displayname;
         user.save(
             function (err) {
                 if (!err) {
