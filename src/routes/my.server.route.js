@@ -19,15 +19,10 @@ module.exports = (nav) => {
         .post(function (req, res) {
             var blog = new Blog;
             blog.title = req.body.title;
+            blog.subtitle = req.body.subtitle;
             blog.content = req.body.content;
-            //            blog.authorId = req.user._id;
 
-            if (req.user)
-                blog.authorId = req.user._id || '568216c279df5f98015181af';
-            else
-                blog.authorId = '568216c279df5f98015181af';
-
-            console.log(blog);
+            blog.authorId = req.user._id;
 
             blog.save((err) => {
                 //Needs to print the error!
@@ -55,7 +50,7 @@ module.exports = (nav) => {
             }, function (err, blogs) {
                 if (!err) {
                     console.log(blogs);
-                    res.render('my/index', {
+                    res.render('blogs', {
                         title: 'Bloggedin',
                         caption: 'Powered by Node.js',
                         copyright: 'ASHw.xyz',

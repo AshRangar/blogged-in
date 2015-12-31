@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Clean Blog - Contact</title>
+    <title>Clean Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -71,62 +71,49 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('/img/contact-bg.jpg')">
+    <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="page-heading">
-                        <h1>New Post</h1>
+                    <div class="site-heading">
+                        <h1><%=title%></h1>
                         <hr class="small">
-                        <span class="subheading">Have questions? I have answers (maybe).</span>
+                        <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-
     <!-- Main Content -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
-                <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
-                <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-                <form action="/my/newblog" method="post" role="form" name="newpostform" id="newpostform" novalidate>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="Title" id="title" required data-validation-required-message="Enter the title of the blog post.">
-                            <p class="help-block text-danger"></p>
-                        </div>
+
+                <%for(var i in blogs){%>
+
+                    <div class="post-preview">
+                        <a href="my/blogs/<%=blogs[i]._id%>">
+                            <h2 class="post-title">
+                        <%=blogs[i].title%>
+                        </h2>
+                            <h3 class="post-subtitle">
+                                <%=blogs[i].subtitle%>
+                        </h3>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
                     </div>
 
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Title</label>
-                            <input type="text" class="form-control" name="subtitle" placeholder="Subtitle" id="subtitle" required data-validation-required-message="Enter the subtitle of the blog post.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
+                    <%}%>
 
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Content</label>
-                            <textarea rows="13" class="form-control" name="content" placeholder="Content" id="content" required data-validation-required-message="Enter the content of the blog post."></textarea>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <br>
-                    <div id="success"></div>
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-default">Post</button>
-                        </div>
-                    </div>
-                </form>
+                        <hr>
+                        <!-- Pager -->
+                        <ul class="pager">
+                            <li class="next">
+                                <a href="#">Older Posts &rarr;</a>
+                            </li>
+                        </ul>
             </div>
-
         </div>
     </div>
 
@@ -137,7 +124,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="copyright text-muted">Copyright &copy;
+                        <%=copyright%>
+                    </p>
                 </div>
             </div>
         </div>
@@ -150,7 +139,7 @@
     <script src="/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="/js/clean-blog.js"></script>
+    <script src="/js/clean-blog.min.js"></script>
 
 </body>
 

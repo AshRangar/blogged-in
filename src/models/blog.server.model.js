@@ -8,6 +8,9 @@ var blogSchema = mongoose.Schema({
     title: {
         type: String
     },
+    subtitle: {
+        type: String
+    },
     content: {
         type: String
     }
