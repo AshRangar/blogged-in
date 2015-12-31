@@ -33,8 +33,8 @@ app.use('/auth', authRouter);
 var myRouter = require('./src/routes/my.server.route.js')(nav);
 app.use('/my', myRouter);
 
-//var usersRouter = require('./src/routes/users.server.route.js')(nav);
-//app.use('/users', usersRouter);
+var usersRouter = require('./src/routes/users.server.route.js')();
+app.use('/users', usersRouter);
 
 app.get('/', (req, res) => {
     res.render('login', {
