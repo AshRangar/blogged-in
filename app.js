@@ -58,6 +58,9 @@ var info = {
     copyright: 'ASHw.xyz'
 };
 
+var homeRouter = require('./src/routes/home.server.route.js')(nav, info);
+app.use('/', homeRouter);
+
 var authRouter = require('./src/routes/auth.server.route.js')(nav, info);
 app.use('/auth', authRouter);
 
@@ -70,14 +73,14 @@ app.use('/users', usersRouter);
 var blogsRouter = require('./src/routes/blogs.server.route.js')(nav, info);
 app.use('/blogs', blogsRouter);
 
-app.get('/', (req, res) => {
-    res.render('login', {
-        nav: nav,
-        title: info.title,
-        caption: info.caption,
-        copyright: info.copyright,
-    });
-});
+//app.get('/', (req, res) => {
+//    res.render('login', {
+//        nav: nav,
+//        title: info.title,
+//        caption: info.caption,
+//        copyright: info.copyright,
+//    });
+//});
 
 app.listen(port, () => {
     console.log('Listening on port ' + port);
