@@ -23,7 +23,7 @@ module.exports = (nav, info) => {
         .get(function (req, res, next) {
             Blog.findById(req.params.id, function (err, blog) {
                 if (!err) {
-                    res.render('my/post', {
+                    res.render('post', {
                         nav: nav,
                         title: info.title,
                         caption: info.caption,
