@@ -41,6 +41,9 @@ app.use('/my', myRouter);
 var usersRouter = require('./src/routes/users.server.route.js')(nav, info);
 app.use('/users', usersRouter);
 
+var blogsRouter = require('./src/routes/blogs.server.route.js')(nav, info);
+app.use('/blogs', blogsRouter);
+
 app.get('/', (req, res) => {
     res.render('login', {
         title: info.title,

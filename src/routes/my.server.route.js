@@ -22,7 +22,6 @@ module.exports = (nav, info) => {
             blog.title = req.body.title;
             blog.subtitle = req.body.subtitle;
             blog.content = req.body.content;
-
             blog.authorId = req.user._id;
 
             blog.save((err) => {
@@ -63,32 +62,6 @@ module.exports = (nav, info) => {
                 }
             });
         });
-
-    myRouter.route('/blogs/:id')
-        .all(function (req, res, next) {
-            if (req.user) {
-                next();
-            } else {
-                next();
-                //res.redirect('/');
-            }
-        })
-        .get(function (req, res, next) {
-            Blog.findById(req.params.id, function (err, blog) {
-                if (!err) {
-                    console.log(blog);
-                    res.render('my/post', {
-                        title: info.title,
-                        caption: info.caption,
-                        copyright: info.copyright,
-                        blog: blog
-                    });
-                    //                    res.json(blogs);
-                } else {
-                    res.send('Error!')
-                }
-            });
-        })
 
     return myRouter;
 };
