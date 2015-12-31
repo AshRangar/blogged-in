@@ -4,14 +4,15 @@ var userRouter = express.Router();
 var User = require('../models/user.server.model.js');
 var Blog = require('../models/blog.server.model.js');
 
-module.exports = () => {
+module.exports = (nav, info) => {
+
     userRouter.route('/')
         .get(function (req, res) {
             User.find({}, function (err, users) {
                 res.render('userslist', {
-                    title: 'Bloggedin',
-                    caption: 'Powered by Node.js',
-                    copyright: 'ASHw.xyz',
+                    title: info.title,
+                    caption: info.caption,
+                    copyright: info.copyright,
                     users: users
                 })
             });
@@ -26,9 +27,9 @@ module.exports = () => {
             Blog.find(query, function (err, blogs) {
                 if (!err) {
                     res.render('blogs', {
-                        title: 'Bloggedin',
-                        caption: 'Powered by Node.js',
-                        copyright: 'ASHw.xyz',
+                        title: info.title,
+                        caption: info.caption,
+                        copyright: info.copyright,
                         blogs: blogs
                     });
                 }

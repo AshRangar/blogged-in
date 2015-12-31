@@ -3,7 +3,8 @@ var myRouter = express.Router();
 
 var Blog = require('../models/blog.server.model.js');
 
-module.exports = (nav) => {
+module.exports = (nav, info) => {
+
     myRouter.route('/newBlog')
         .all(function (req, res, next) {
             if (req.user) {
@@ -51,9 +52,9 @@ module.exports = (nav) => {
                 if (!err) {
                     console.log(blogs);
                     res.render('blogs', {
-                        title: 'Bloggedin',
-                        caption: 'Powered by Node.js',
-                        copyright: 'ASHw.xyz',
+                        title: info.title,
+                        caption: info.caption,
+                        copyright: info.copyright,
                         blogs: blogs
                     });
                     //                    res.json(blogs);
@@ -77,9 +78,9 @@ module.exports = (nav) => {
                 if (!err) {
                     console.log(blog);
                     res.render('my/post', {
-                        title: 'Bloggedin',
-                        caption: 'Powered by Node.js',
-                        copyright: 'ASHw.xyz',
+                        title: info.title,
+                        caption: info.caption,
+                        copyright: info.copyright,
                         blog: blog
                     });
                     //                    res.json(blogs);

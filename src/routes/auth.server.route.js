@@ -2,7 +2,7 @@ var express = require('express');
 var authRouter = express.Router();
 var passport = require('passport');
 
-module.exports = (nav) => {
+module.exports = (nav, info) => {
 
     authRouter.route('/signIn')
         .post(passport.authenticate('local.signin', {

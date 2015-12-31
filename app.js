@@ -26,29 +26,26 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 var nav = [];
+var info = {
+    title: 'Bloggedin',
+    caption: 'Powered by Node.js',
+    copyright: 'ASHw.xyz'
+};
 
-var authRouter = require('./src/routes/auth.server.route.js')(nav);
+var authRouter = require('./src/routes/auth.server.route.js')(nav, info);
 app.use('/auth', authRouter);
 
-var myRouter = require('./src/routes/my.server.route.js')(nav);
+var myRouter = require('./src/routes/my.server.route.js')(nav, info);
 app.use('/my', myRouter);
 
-var usersRouter = require('./src/routes/users.server.route.js')();
+var usersRouter = require('./src/routes/users.server.route.js')(nav, info);
 app.use('/users', usersRouter);
 
 app.get('/', (req, res) => {
     res.render('login', {
-        title: 'Bloggedin',
-        caption: 'Powered by Node.js',
-        copyright: 'ASHw.xyz'
-    });
-});
-
-app.get('/index', (req, res) => {
-    res.render('index', {
-        title: 'Bloggedin',
-        caption: 'Powered by Node.js',
-        copyright: 'ASHw.xyz'
+        title: info.title,
+        caption: info.caption,
+        copyright: info.copyright,
     });
 });
 
