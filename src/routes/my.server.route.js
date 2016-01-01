@@ -49,10 +49,12 @@ module.exports = (nav, info) => {
             }
         })
         .get(function (req, res) {
-            console.log(req.user._id);
-            Blog.find({
+            var query = {
                 'authorId': req.user._id
-            }, function (err, blogs) {
+            };
+            Blog.find(query).sort({
+                date: -1
+            }).exec(function (err, blogs) {
                 if (!err) {
                     console.log(blogs);
                     res.render('blogs', {
@@ -62,7 +64,6 @@ module.exports = (nav, info) => {
                         copyright: info.copyright,
                         blogs: blogs
                     });
-                    //                    res.json(blogs);
                 } else {
                     res.send('Error!');
                 }
