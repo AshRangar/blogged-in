@@ -73,7 +73,9 @@
                     <div class="post-heading">
                         <h1><%=blog.title%></h1>
                         <h2 class="subheading"><%=blog.subtitle%></h2>
-                        <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>
+                        <span class="meta">Posted by <a href="#">Start Bootstrap</a> on                             
+                            <%var date = blog._id.getTimestamp().toDateString()%>
+                                <%=date.substr(date.indexOf(' ')+1);%></span>
                     </div>
                 </div>
             </div>

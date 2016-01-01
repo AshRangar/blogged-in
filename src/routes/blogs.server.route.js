@@ -30,7 +30,6 @@ module.exports = (nav, info) => {
                         copyright: info.copyright,
                         blog: blog
                     });
-                    //                    res.json(blogs);
                 } else {
                     res.send('Error!');
                 }

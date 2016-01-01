@@ -96,7 +96,10 @@
                                 <%=blogs[i].subtitle%>
                         </h3>
                         </a>
-                        <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
+                        <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on
+                            <%var date = blogs[i]._id.getTimestamp().toDateString()%>
+                                <%=date.substr(date.indexOf(' ')+1);%>
+                        </p>
                     </div>
 
                     <%}%>
