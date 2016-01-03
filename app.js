@@ -8,7 +8,8 @@ var session = require('express-session');
 var port = process.env.PORT || 3000;
 
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost/bloggedin');
+var dbConfig = require('./src/config/db.config.js')();
+var db = mongoose.connect(dbConfig.URL);
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
