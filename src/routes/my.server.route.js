@@ -1,7 +1,7 @@
 var express = require('express');
 var myRouter = express.Router();
 
-var Blog = require('../models/blog.server.model.js');
+var Post = require('../models/post.server.model.js');
 
 module.exports = (nav, info) => {
 
@@ -24,13 +24,13 @@ module.exports = (nav, info) => {
             });
         })
         .post(function (req, res) {
-            var blog = new Blog;
-            blog.title = req.body.title;
-            blog.subtitle = req.body.subtitle;
-            blog.content = req.body.content;
-            blog.authorId = req.user._id;
+            var post = new Post;
+            post.title = req.body.title;
+            post.subtitle = req.body.subtitle;
+            post.content = req.body.content;
+            post.authorId = req.user._id;
 
-            blog.save((err) => {
+            post.save((err) => {
                 //Needs to print the error!
                 if (err) {
                     console.log('Error. Couldn\'t add blog to database');
@@ -53,18 +53,17 @@ module.exports = (nav, info) => {
             var query = {
                 'authorId': req.user._id
             };
-            Blog.find(query).sort({
+            Post.find(query).sort({
                 date: -1
-            }).exec(function (err, blogs) {
+            }).exec(function (err, posts) {
                 if (!err) {
-                    console.log(blogs);
                     res.render('pages/allposts', {
                         nav: nav,
                         info: info,
                         title: info.title,
                         caption: info.caption,
                         copyright: info.copyright,
-                        blogs: blogs
+                        posts: posts
                     });
                 } else {
                     res.send('Error!');

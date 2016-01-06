@@ -2,7 +2,7 @@ var express = require('express');
 var userRouter = express.Router();
 
 var User = require('../models/user.server.model.js');
-var Blog = require('../models/blog.server.model.js');
+var Post = require('../models/post.server.model.js');
 
 module.exports = (nav, info) => {
 
@@ -26,7 +26,7 @@ module.exports = (nav, info) => {
                 authorId: req.params.id
             };
 
-            Blog.find(query, function (err, blogs) {
+            Post.find(query, function (err, posts) {
                 if (!err) {
                     res.render('pages/allposts', {
                         nav: nav,
@@ -34,10 +34,10 @@ module.exports = (nav, info) => {
                         title: info.title,
                         caption: info.caption,
                         copyright: info.copyright,
-                        blogs: blogs
+                        posts: posts
                     });
                 }
-            })
+            });
         });
 
     return userRouter;

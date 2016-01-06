@@ -76,7 +76,7 @@ app.use('/my', myRouter);
 var usersRouter = require('./src/routes/users.server.route.js')(nav, info);
 app.use('/users', usersRouter);
 
-var blogsRouter = require('./src/routes/blogs.server.route.js')(nav, info);
+var blogsRouter = require('./src/routes/posts.server.route.js')(nav, info);
 app.use('/posts', blogsRouter);
 
 app.listen(port, () => {
