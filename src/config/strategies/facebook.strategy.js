@@ -1,6 +1,6 @@
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
-var facebookStrategyController = require('../../controllers/facebookstrategy.controller.js')();
+var facebookStrategyController = require('../../controllers/facebookstrategy.server.controller.js')();
 
 var keys = require('../auth.config.js')();
 

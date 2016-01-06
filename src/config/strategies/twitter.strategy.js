@@ -1,6 +1,6 @@
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
-var twitterStrategyController = require('../../controllers/twitterstrategy.controller.js')();
+var twitterStrategyController = require('../../controllers/twitterstrategy.server.controller.js')();
 
 var keys = require('../auth.config.js')();
 

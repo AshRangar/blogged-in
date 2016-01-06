@@ -1,6 +1,6 @@
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var googleStrategyController = require('../../controllers/googlestrategy.controller.js')();
+var googleStrategyController = require('../../controllers/googlestrategy.server.controller.js')();
 
 var keys = require('../auth.config.js')();
 
