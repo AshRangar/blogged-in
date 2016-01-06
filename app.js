@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-//app.use(bodyParser.urlencoded());
+
 app.use(cookieParser());
 app.use(session({
     secret: 'BloggedInSession'
@@ -25,7 +25,7 @@ require('./src/config/passport.js')(app);
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
-//, 'My Posts', , 'All Users', 'All Posts', 'Logout'
+
 var nav = [
     {
         item: 'Home',
