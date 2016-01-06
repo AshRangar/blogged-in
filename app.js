@@ -54,9 +54,11 @@ var nav = [
 ];
 
 var info = {
-    title: 'Bloggedin',
-    caption: 'Powered by Node.js',
-    copyright: 'ASHw.xyz'
+    navtitle: 'Bloggedin',
+    heading: 'Bloggedin',
+    subheading: 'A Node.js Creation',
+    copyright: 'Ashwin Rangarajan',
+    background: '/img/red-cube.jpg'
 };
 
 var homeRouter = require('./src/routes/home.server.route.js')(nav, info);
