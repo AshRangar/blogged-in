@@ -26,44 +26,6 @@ require('./src/config/passport.js')(app);
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-var nav = [
-    {
-        item: 'Home',
-        link: '/'
-    },
-    {
-        item: 'My Posts',
-        link: '/my/posts/'
-    },
-    {
-        item: 'New Post',
-        link: '/my/newpost'
-    },
-    {
-        item: 'All Users',
-        link: '/users/'
-    },
-    {
-        item: 'All Posts',
-        link: '/posts/'
-    },
-    {
-        item: 'Logout',
-        link: '/auth/signout/'
-    }
-];
-
-var info = {
-    author: 'Ashwin Rangarajan',
-    authorlink: 'http://AshRangar.com',
-    navtitle: 'Bloggedin',
-    heading: 'Bloggedin',
-    subheading: 'A Node.js Creation',
-    copyright: 'Ashwin Rangarajan',
-    copyrightlink: 'http://AshRangar.com',
-    background: '/img/red-cube.jpg'
-};
-
 var homeRouter = require('./src/routes/home.server.route.js')();
 app.use('/', homeRouter);
 
