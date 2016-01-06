@@ -8,8 +8,9 @@ module.exports = (nav, info) => {
         .get(function (req, res) {
             Blog.find({}, function (err, blogs) {
                 if (!err) {
-                    res.render('blogs', {
+                    res.render('pages/allposts', {
                         nav: nav,
+                        info: info,
                         title: info.title,
                         caption: info.caption,
                         copyright: info.copyright,
@@ -23,8 +24,9 @@ module.exports = (nav, info) => {
         .get(function (req, res, next) {
             Blog.findById(req.params.id, function (err, blog) {
                 if (!err) {
-                    res.render('post', {
+                    res.render('pages/post', {
                         nav: nav,
+                        info: info,
                         title: info.title,
                         caption: info.caption,
                         copyright: info.copyright,

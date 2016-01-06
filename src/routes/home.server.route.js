@@ -11,8 +11,9 @@ module.exports = (nav, info) => {
             }
         })
         .get((req, res) => {
-            res.render('login', {
+            res.render('pages/login', {
                 nav: nav,
+                info: info,
                 title: info.title,
                 caption: info.caption,
                 copyright: info.copyright

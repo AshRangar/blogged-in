@@ -15,8 +15,9 @@ module.exports = (nav, info) => {
             }
         })
         .get(function (req, res) {
-            res.render('newblog', {
+            res.render('pages/newpost', {
                 nav: nav,
+                info: info,
                 title: info.title,
                 caption: info.caption,
                 copyright: info.copyright
@@ -57,8 +58,9 @@ module.exports = (nav, info) => {
             }).exec(function (err, blogs) {
                 if (!err) {
                     console.log(blogs);
-                    res.render('blogs', {
+                    res.render('pages/allposts', {
                         nav: nav,
+                        info: info,
                         title: info.title,
                         caption: info.caption,
                         copyright: info.copyright,

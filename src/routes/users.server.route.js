@@ -9,8 +9,9 @@ module.exports = (nav, info) => {
     userRouter.route('/')
         .get(function (req, res) {
             User.find({}, function (err, users) {
-                res.render('userslist', {
+                res.render('pages/userslist', {
                     nav: nav,
+                    info: info,
                     title: info.title,
                     caption: info.caption,
                     copyright: info.copyright,
@@ -27,8 +28,9 @@ module.exports = (nav, info) => {
 
             Blog.find(query, function (err, blogs) {
                 if (!err) {
-                    res.render('blogs', {
+                    res.render('pages/allposts', {
                         nav: nav,
+                        info: info,
                         title: info.title,
                         caption: info.caption,
                         copyright: info.copyright,
