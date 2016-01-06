@@ -5,7 +5,7 @@ module.exports = (nav, info) => {
     homeRouter.route('/')
         .all((req, res, next) => {
             if (req.user) {
-                res.redirect('/blogs/');
+                res.redirect('my/posts/');
             } else {
                 next();
             }

@@ -33,11 +33,11 @@ var nav = [
     },
     {
         item: 'My Posts',
-        link: '/my/blogs/'
+        link: '/my/posts/'
     },
     {
         item: 'New Post',
-        link: '/my/newblog'
+        link: '/my/newpost'
     },
     {
         item: 'All Users',
@@ -45,7 +45,7 @@ var nav = [
     },
     {
         item: 'All Posts',
-        link: '/blogs/'
+        link: '/posts/'
     },
     {
         item: 'Logout',
@@ -77,7 +77,7 @@ var usersRouter = require('./src/routes/users.server.route.js')(nav, info);
 app.use('/users', usersRouter);
 
 var blogsRouter = require('./src/routes/blogs.server.route.js')(nav, info);
-app.use('/blogs', blogsRouter);
+app.use('/posts', blogsRouter);
 
 app.listen(port, () => {
     console.log('Listening on port ' + port);

@@ -5,7 +5,7 @@ var Blog = require('../models/blog.server.model.js');
 
 module.exports = (nav, info) => {
 
-    myRouter.route('/newBlog')
+    myRouter.route('/newpost')
         .all(function (req, res, next) {
             if (req.user) {
                 next();
@@ -34,13 +34,13 @@ module.exports = (nav, info) => {
                 //Needs to print the error!
                 if (err) {
                     console.log('Error. Couldn\'t add blog to database');
-                    res.redirect('/my/newblog');
+                    res.redirect('/my/newpost');
                 }
-                res.redirect('/my/newblog');
+                res.redirect('/my/newpost');
             });
         });
 
-    myRouter.route('/blogs')
+    myRouter.route('/posts')
         .all(function (req, res, next) {
             if (req.user) {
                 next();
