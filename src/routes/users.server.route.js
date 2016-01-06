@@ -12,9 +12,6 @@ module.exports = (nav, info) => {
                 res.render('pages/userslist', {
                     nav: nav,
                     info: info,
-                    title: info.title,
-                    caption: info.caption,
-                    copyright: info.copyright,
                     users: users
                 });
             });
@@ -31,9 +28,6 @@ module.exports = (nav, info) => {
                     res.render('pages/allposts', {
                         nav: nav,
                         info: info,
-                        title: info.title,
-                        caption: info.caption,
-                        copyright: info.copyright,
                         posts: posts
                     });
                 }

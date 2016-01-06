@@ -11,9 +11,6 @@ module.exports = (nav, info) => {
                     res.render('pages/allposts', {
                         nav: nav,
                         info: info,
-                        title: info.title,
-                        caption: info.caption,
-                        copyright: info.copyright,
                         posts: posts
                     });
                 }
@@ -27,9 +24,6 @@ module.exports = (nav, info) => {
                     res.render('pages/post', {
                         nav: nav,
                         info: info,
-                        title: info.title,
-                        caption: info.caption,
-                        copyright: info.copyright,
                         post: post
                     });
                 } else {

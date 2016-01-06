@@ -17,10 +17,7 @@ module.exports = (nav, info) => {
         .get(function (req, res) {
             res.render('pages/newpost', {
                 nav: nav,
-                info: info,
-                title: info.title,
-                caption: info.caption,
-                copyright: info.copyright
+                info: info
             });
         })
         .post(function (req, res) {
@@ -60,9 +57,6 @@ module.exports = (nav, info) => {
                     res.render('pages/allposts', {
                         nav: nav,
                         info: info,
-                        title: info.title,
-                        caption: info.caption,
-                        copyright: info.copyright,
                         posts: posts
                     });
                 } else {
