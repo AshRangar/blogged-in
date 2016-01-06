@@ -64,19 +64,19 @@ var info = {
     background: '/img/red-cube.jpg'
 };
 
-var homeRouter = require('./src/routes/home.server.route.js')(nav, info);
+var homeRouter = require('./src/routes/home.server.route.js')();
 app.use('/', homeRouter);
 
-var authRouter = require('./src/routes/auth.server.route.js')(nav, info);
+var authRouter = require('./src/routes/auth.server.route.js')();
 app.use('/auth', authRouter);
 
-var myRouter = require('./src/routes/my.server.route.js')(nav, info);
+var myRouter = require('./src/routes/my.server.route.js')();
 app.use('/my', myRouter);
 
-var usersRouter = require('./src/routes/users.server.route.js')(nav, info);
+var usersRouter = require('./src/routes/users.server.route.js')();
 app.use('/users', usersRouter);
 
-var blogsRouter = require('./src/routes/posts.server.route.js')(nav, info);
+var blogsRouter = require('./src/routes/posts.server.route.js')();
 app.use('/posts', blogsRouter);
 
 app.listen(port, () => {

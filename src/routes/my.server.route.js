@@ -3,7 +3,10 @@ var myRouter = express.Router();
 
 var Post = require('../models/post.server.model.js');
 
-module.exports = (nav, info) => {
+var info = require('../config/info.config.js')();
+var nav = require('../config/nav.config.js')();
+
+module.exports = () => {
 
     myRouter.route('/newpost')
         .all(function (req, res, next) {
@@ -15,6 +18,8 @@ module.exports = (nav, info) => {
             }
         })
         .get(function (req, res) {
+            info.heading = 'NEW POST';
+            info.subheading = req.user.username;
             res.render('pages/newpost', {
                 nav: nav,
                 info: info
@@ -54,6 +59,8 @@ module.exports = (nav, info) => {
                 date: -1
             }).exec(function (err, posts) {
                 if (!err) {
+                    info.heading = 'My Posts';
+                    info.subheading = req.user.username;
                     res.render('pages/allposts', {
                         nav: nav,
                         info: info,

@@ -1,7 +1,10 @@
 var express = require('express');
 var homeRouter = express.Router();
 
-module.exports = (nav, info) => {
+var info = require('../config/info.config.js')();
+var nav = require('../config/nav.config.js')();
+
+module.exports = () => {
     homeRouter.route('/')
         .all((req, res, next) => {
             if (req.user) {
