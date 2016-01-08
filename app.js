@@ -12,6 +12,7 @@ var dbConfig = require('./src/config/db.config.js')();
 var db = mongoose.connect(dbConfig.URL);
 
 app.use(express.static('public'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
