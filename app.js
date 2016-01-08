@@ -21,6 +21,7 @@ app.use(cookieParser());
 app.use(session({
     secret: 'BloggedInSession'
 }));
+
 require('./src/config/passport.js')(app);
 
 app.set('views', './src/views');
