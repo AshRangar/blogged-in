@@ -29,7 +29,10 @@
                                 <%=posts[i].subtitle%>
                         </h3>
                                 </a>
-                                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on
+                                <p class="post-meta">Posted by
+                                    <a href="/users/<%=posts[i].authorId%>">
+                                        <%=posts[i].authorUsername%>
+                                    </a> on
                                     <%var date = posts[i]._id.getTimestamp().toDateString()%>
                                         <%=date.substr(date.indexOf(' ')+1);%>
                                 </p>
