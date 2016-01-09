@@ -8,7 +8,7 @@
             <link href="/css/login.css" rel="stylesheet">
 </head>
 
-<body>
+<body ng-app="app">
 
     <% include ../partials/navbar.ejs %>
         <% include ../partials/header.ejs %>
@@ -28,7 +28,7 @@
                                 </div>
                                 <hr>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" ng-controller="SignupController">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <form id="login-form" action="/auth/signin" method="post" role="form" style="display: block;">
@@ -51,30 +51,48 @@
                                             </div>
                                         </form>
 
+                                        <!--
                                         <form id="register-form" action="auth/signup" method="post" role="form" style="display: none;">
-                                            <div class="form-group">
-                                                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+-->
+
+                                        <form class="form-horizontal" id="registerForm" role="form" style="display: none;" ng-submit="signupSubmit()" novalidate>
+                                            <div class="form-group" ng-class="{ 'has-error' : displaynameForm.user.$invalid }">
+                                                <ng-form name="displaynameForm">
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" id="displayName" name="user" placeholder="Full name" ng-model="user.displayname" required>
+                                                    </div>
+
+                                                </ng-form>
                                             </div>
-                                            <div class="form-group">
-                                                <input type="text" name="displayname" id="displayname" tabindex="1" class="form-control" placeholder="Full Name" value="">
+
+                                            <div class="form-group" ng-class="{ 'has-error' : usernameForm.user.$invalid }">
+                                                <ng-form name="usernameForm">
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" id="username" placeholder="Username" name="user" ng-model="user.username" ng-minlength="4" ng-maxlength="32" required>
+                                                        <p class="help-block" ng-show="usernameForm.user.$invalid">Username must have atleast 4 characters</p>
+                                                    </div>
+
+                                                </ng-form>
                                             </div>
-                                            <div class="form-group">
-                                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+
+                                            <div class="form-group" ng-class="{ 'has-error' : emailForm.email.$invalid }">
+                                                <ng-form name="emailForm">
+                                                    <div class="col-sm-12">
+                                                        <input type="email" class="form-control" placeholder="Email" name="email" ng-model="user.email" required>
+                                                    </div>
+                                                </ng-form>
                                             </div>
-                                            <div class="form-group">
-                                                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-                                            </div>
+
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-6 col-sm-offset-3">
-                                                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                        <button type="submit" tabindex="4" class="form-control btn btn-login">Register</button>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </form>
+
                                         <ul class="list-inline text-center">
                                             <li>
                                                 <a href="/auth/twitter">
@@ -112,6 +130,12 @@
             <% include ../partials/footer.ejs %>
                 <% include ../partials/js.ejs %>
                     <script src="/js/login.js"></script>
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+                    <script src="/js/app/app.js"></script>
+                    <script src="/js/app/controllers/signupController.js"></script>
+
 </body>
 
 </html>
