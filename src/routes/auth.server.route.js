@@ -76,7 +76,7 @@ module.exports = () => {
 
         });
 
-    // API to check if the username exits
+    // API to check if the username is already taken
     authRouter.route('/username/:username')
         .get(function (req, res, next) {
             var query = {
