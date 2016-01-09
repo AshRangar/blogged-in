@@ -5,7 +5,7 @@ var blogSchema = mongoose.Schema({
     authorId: {
         type: Schema.Types.ObjectId,
     },
-    authorName: {
+    authorUsername: {
         type: String
     },
     title: {
