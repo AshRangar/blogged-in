@@ -5,6 +5,9 @@ var blogSchema = mongoose.Schema({
     authorId: {
         type: Schema.Types.ObjectId,
     },
+    authorName: {
+        type: String
+    },
     title: {
         type: String
     },
