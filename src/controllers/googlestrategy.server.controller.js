@@ -10,11 +10,11 @@ var googleStrategyController = () => {
                 done(null, user);
             } else {
                 var user = new User;
-                user.email = profile.emails[0].value;
                 user.image = profile._json.image.url;
                 user.displayName = profile.displayName;
 
                 user.google = {};
+                user.google.email = profile.emails[0].value;
                 user.google.id = profile.id;
                 user.google.token = accessToken;
                 user.google.secret = 'FeS3up9YgTZ9U6FoUubBiWHU';
