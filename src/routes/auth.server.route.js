@@ -54,12 +54,12 @@ module.exports = () => {
             }
         })
         // If the user has username, redirect to /my/posts
-        // If the user doesn't have one, add the entered username to user document 
+        // If the user doesn't have one, add the entered username to user document
         .post(function (req, res) {
             if (!req.user.username) {
                 var query = {
                     _id: req.user._id
-                }
+                };
                 User.findOne(query, function (err, user) {
                     if (!err) {
                         user.username = req.body.username;
@@ -73,7 +73,6 @@ module.exports = () => {
                 res.redirect('/my/posts');
             }
 
-
         });
 
     // API to check if the username is already taken
@@ -85,15 +84,16 @@ module.exports = () => {
             User.findOne(query, function (err, user) {
                 if (err) {
                     res.json({
-                        message: 'Error!'
+                        error: 'true',
+                        message: 'cannot connect to database'
                     });
                 } else if (user) {
                     res.json({
-                        Exists: "True"
+                        exists: 'true'
                     });
                 } else {
                     res.json({
-                        Exists: "False"
+                        exists: 'false'
                     });
                 }
             });
@@ -108,15 +108,16 @@ module.exports = () => {
             User.findOne(query, function (err, user) {
                 if (err) {
                     res.json({
-                        message: 'Error!'
+                        error: 'true',
+                        message: 'cannot connect to database'
                     });
                 } else if (user) {
                     res.json({
-                        Exists: "True"
+                        exists: 'true'
                     });
                 } else {
                     res.json({
-                        Exists: "False"
+                        exists: 'false'
                     });
                 }
             });
