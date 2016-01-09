@@ -29,6 +29,8 @@ module.exports = () => {
             res.redirect('/');
         });
 
+    // Route to force user to create an username if haven't created already
+    // Intended to users that use OAuth
     authRouter.route('/username')
         // If the user is not logged in, redirect to login page
         // If the user is logged in, go next
@@ -72,6 +74,29 @@ module.exports = () => {
             }
 
 
+        });
+
+    // API to check if the username exits
+    authRouter.route('/username/:username')
+        .get(function (req, res, next) {
+            var query = {
+                username: req.params.username
+            };
+            User.findOne(query, function (err, user) {
+                if (err) {
+                    res.json({
+                        message: 'Error!'
+                    });
+                } else if (user) {
+                    res.json({
+                        Exists: "True"
+                    });
+                } else {
+                    res.json({
+                        Exists: "False"
+                    });
+                }
+            });
         });
 
     authRouter.route('/profile')
