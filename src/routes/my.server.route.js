@@ -31,6 +31,7 @@ module.exports = () => {
             post.subtitle = req.body.subtitle;
             post.content = req.body.content;
             post.authorId = req.user._id;
+            post.authorUsername = req.user.username;
 
             post.save((err) => {
                 //Needs to print the error!
