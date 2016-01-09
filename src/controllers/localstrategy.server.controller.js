@@ -25,7 +25,6 @@ var localStrategyController = () => {
         user.save(
             function (err) {
                 if (!err) {
-                    console.log('Here in signUp Mongoose!');
                     req.user = user;
                     return done(null, user);
                 } else {

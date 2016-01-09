@@ -36,7 +36,6 @@ module.exports = () => {
             if (!req.user) {
                 res.redirect('/');
             } else {
-                console.log(req.user);
                 next();
             }
         })

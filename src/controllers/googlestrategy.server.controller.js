@@ -7,10 +7,8 @@ var googleStrategyController = () => {
         };
         User.findOne(query, function (error, user) {
             if (user) {
-                console.log('Found user');
                 done(null, user);
             } else {
-                console.log('Not found user');
                 var user = new User;
                 user.email = profile.emails[0].value;
                 user.image = profile._json.image.url;

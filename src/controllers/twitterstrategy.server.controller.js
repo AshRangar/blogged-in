@@ -8,10 +8,8 @@ var twitterStrategyController = () => {
 
         User.findOne(query, function (error, user) {
             if (user) {
-                console.log('Found user');
                 done(null, user);
             } else {
-                console.log('Not found user');
                 var user = new User;
                 user.image = profile._json.profile_image_url;
                 user.displayName = profile.displayName;
