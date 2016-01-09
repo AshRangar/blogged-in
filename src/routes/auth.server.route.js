@@ -99,6 +99,29 @@ module.exports = () => {
             });
         });
 
+    // API to check if the user with the provided email exits
+    authRouter.route('/email/:email')
+        .get(function (req, res, next) {
+            var query = {
+                email: req.params.email
+            };
+            User.findOne(query, function (err, user) {
+                if (err) {
+                    res.json({
+                        message: 'Error!'
+                    });
+                } else if (user) {
+                    res.json({
+                        Exists: "True"
+                    });
+                } else {
+                    res.json({
+                        Exists: "False"
+                    });
+                }
+            });
+        });
+
     authRouter.route('/profile')
         .all((req, res, next) => {
             if (!req.user) {
