@@ -8,6 +8,16 @@ var nav = require('../config/nav.config.js')();
 
 module.exports = () => {
     blogsRouter.route('/')
+        .all(function (req, res, next) {
+            if (req.user) {
+                nav[nav.length - 1].item = 'Logout';
+                nav[nav.length - 1].link = '/auth/signOut';
+            } else {
+                nav[nav.length - 1].item = 'Login';
+                nav[nav.length - 1].link = '/';
+            }
+            next();
+        })
         .get(function (req, res) {
             Post.find({}, function (err, posts) {
                 if (!err) {
