@@ -12,39 +12,40 @@
 
     <% include ../partials/navbar.ejs %>
         <% include ../partials/header.ejs %>
+            <% include ../partials/flash.ejs %>
+    
+                <!-- Main Content -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-            <!-- Main Content -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <%for(var i in users){%>
 
-                        <%for(var i in users){%>
-
-                            <div class="post-preview">
-                                <a href="/users/<%=users[i]._id%>">
-                                    <h2 class="post-title">
+                                <div class="post-preview">
+                                    <a href="/users/<%=users[i]._id%>">
+                                        <h2 class="post-title">
                         <%=users[i].username%>
                         </h2>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
 
-                            <%}%>
+                                <%}%>
 
-                                <hr>
-                                <!-- Pager -->
-                                <ul class="pager">
-                                    <li class="next">
-                                        <a href="#">Older Posts &rarr;</a>
-                                    </li>
-                                </ul>
+                                    <hr>
+                                    <!-- Pager -->
+                                    <ul class="pager">
+                                        <li class="next">
+                                            <a href="#">Older Posts &rarr;</a>
+                                        </li>
+                                    </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <hr>
+                <hr>
 
-            <% include ../partials/footer.ejs %>
-                <% include ../partials/js.ejs %>
+                <% include ../partials/footer.ejs %>
+                    <% include ../partials/js.ejs %>
 
 </body>
 
