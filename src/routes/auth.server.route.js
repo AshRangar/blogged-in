@@ -26,7 +26,7 @@ module.exports = () => {
     authRouter.route('/signOut')
         .all(function (req, res, next) {
             if (!req.user) {
-                req.flash('error', 'You\'re not authorized to access this page');
+                req.flash('error', 'Please sign in to access this page!');
                 res.redirect('/');
             } else {
                 next();
@@ -34,7 +34,7 @@ module.exports = () => {
         })
         .get(function (req, res) {
             req.logout();
-            req.flash('notice', 'You\'ve been logged out successfully');
+            req.flash('notice', 'You\'ve been logged out successfully.');
             res.redirect('/');
         });
 
@@ -45,7 +45,7 @@ module.exports = () => {
         // If the user is logged in, go next
         .all(function (req, res, next) {
             if (!req.user) {
-                req.flash('error', 'Please login to access the page!');
+                req.flash('error', 'Please sign in to access the page!');
                 res.redirect('/');
             } else {
                 next();

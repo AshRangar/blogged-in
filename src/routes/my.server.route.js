@@ -13,7 +13,7 @@ module.exports = () => {
             if (req.user) {
                 next();
             } else {
-                req.flash('error', 'You\'re not authorized to access this page');
+                req.flash('error', 'Please sign in to access this page!');
                 res.redirect('/');
             }
         })
@@ -50,7 +50,7 @@ module.exports = () => {
             if (req.user) {
                 next();
             } else {
-                req.flash('error', 'You\'re not authorized to access this page');
+                req.flash('error', 'Please sign in to access this page!');
                 res.redirect('/');
             }
         })
