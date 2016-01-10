@@ -1,10 +1,6 @@
 module.exports = function () {
     var nav = [
         {
-            item: 'Home',
-            link: '/'
-        },
-        {
             item: 'My Posts',
             link: '/my/posts/'
         },
