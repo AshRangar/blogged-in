@@ -36,6 +36,7 @@ module.exports = () => {
         // If the user is logged in, go next
         .all(function (req, res, next) {
             if (!req.user) {
+                req.flash('error', 'Please login to access the page!');
                 res.redirect('/');
             } else {
                 next();
@@ -64,8 +65,10 @@ module.exports = () => {
                     if (!err) {
                         user.username = req.body.username;
                         user.save();
+                        req.flash('notice', 'Congratulations. Your new account has been created!');
                         res.redirect('/my/posts');
                     } else {
+                        req.flash('error', 'Sorry! We couldn\'t process your request. Please try again');
                         res.redirect('/auth/username');
                     }
                 });
