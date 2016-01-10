@@ -27,10 +27,12 @@ var localStrategyController = () => {
             function (err) {
                 if (!err) {
                     req.user = user;
+                    req.flash('notice', 'Congratulations! Your new account has been created.');
                     return done(null, user);
                 } else {
+                    req.flash('notice', 'Sorry! We couldn\'t create your new account');
                     return done(null, false, {
-                        message: 'Bad username/password combo'
+                        message: 'Can\'t create new user'
                     });
                 }
             }

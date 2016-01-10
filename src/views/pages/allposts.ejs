@@ -12,49 +12,50 @@
 
     <% include ../partials/navbar.ejs %>
         <% include ../partials/header.ejs %>
+            <% include ../partials/flash.ejs %>
 
-            <!-- Main Content -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!-- Main Content -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                        <%for(var i in posts){%>
+                            <%for(var i in posts){%>
 
-                            <div class="post-preview">
-                                <a href="/posts/<%=posts[i]._id%>">
-                                    <h2 class="post-title">
+                                <div class="post-preview">
+                                    <a href="/posts/<%=posts[i]._id%>">
+                                        <h2 class="post-title">
                         <%=posts[i].title%>
                         </h2>
-                                    <h3 class="post-subtitle">
+                                        <h3 class="post-subtitle">
                                 <%=posts[i].subtitle%>
                         </h3>
-                                </a>
-                                <p class="post-meta">Posted by
-                                    <a href="/users/<%=posts[i].authorId%>">
-                                        <%=posts[i].authorUsername%>
-                                    </a> on
-                                    <%var date = posts[i]._id.getTimestamp().toDateString()%>
-                                        <%=date.substr(date.indexOf(' ')+1);%>
-                                </p>
-                            </div>
+                                    </a>
+                                    <p class="post-meta">Posted by
+                                        <a href="/users/<%=posts[i].authorId%>">
+                                            <%=posts[i].authorUsername%>
+                                        </a> on
+                                        <%var date = posts[i]._id.getTimestamp().toDateString()%>
+                                            <%=date.substr(date.indexOf(' ')+1);%>
+                                    </p>
+                                </div>
 
-                            <%}%>
+                                <%}%>
 
-                                <hr>
-                                <!-- Pager -->
-                                <ul class="pager">
-                                    <li class="next">
-                                        <a href="#">Older Posts &rarr;</a>
-                                    </li>
-                                </ul>
+                                    <hr>
+                                    <!-- Pager -->
+                                    <ul class="pager">
+                                        <li class="next">
+                                            <a href="#">Older Posts &rarr;</a>
+                                        </li>
+                                    </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <hr>
+                <hr>
 
-            <% include ../partials/footer.ejs %>
-                <% include ../partials/js.ejs %>
+                <% include ../partials/footer.ejs %>
+                    <% include ../partials/js.ejs %>
 
 </body>
 
