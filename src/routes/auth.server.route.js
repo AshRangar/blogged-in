@@ -24,6 +24,14 @@ module.exports = () => {
         });
 
     authRouter.route('/signOut')
+        .all(function (req, res, next) {
+            if (!req.user) {
+                req.flash('error', 'You\'re not authorized to access this page');
+                res.redirect('/');
+            } else {
+                next();
+            }
+        })
         .get(function (req, res) {
             req.logout();
             req.flash('notice', 'You\'ve been logged out successfully');
