@@ -1,64 +1,120 @@
 angular.module('app').controller('SignupController', ['$scope', '$http', function ($scope, $http) {
-    $scope.username = '';
-    $scope.email = '';
-    $scope.displaName = '';
-    $scope.password = '';
-    $scope.confirmPassword = '';
+    $scope.user = {
+        displayname: '',
+        username: '',
+        email: '',
+        password: '',
+        confirmpassword: ''
+    };
+    $scope.usernameAvailable = false;
+    $scope.emailAvailable = false;
+    $scope.passwordMatch = false;
+    $scope.displaynameValid = false;
+    $scope.validForm = false;
 
-    $scope.user = '';
+    $scope.formChange = false;
 
-    $scope.usernameExists = function () {
+    var usernameExists = function () {
         $http.get('/auth/username/' + $scope.user.username)
             .then(function (response) {
-                console.log(response);
                 if (response.data.exists === 'true') {
-                    console.log('True');
+                    console.log('username unavailable');
+                    $scope.usernameAvailable = false;
+                    $scope.formChange = !$scope.formChange;
                     return true;
                 } else if (response.data.exists === 'false') {
-                    console.log('False');
+                    console.log('username available');
+                    $scope.usernameAvailable = true;
+                    $scope.formChange = !$scope.formChange;
                     return false;
                 } else {
-                    console.log('Error!');
+                    console.log('username error');
+                    $scope.usernameAvailable = false;
+                    $scope.formChange = !$scope.formChange;
                     return true;
                 }
             });
     };
 
-    $scope.emailExists = function () {
+    var emailExists = function () {
         $http.get('/auth/email/' + $scope.user.email)
             .then(function (response) {
-                console.log(response);
                 if (response.data.exists === 'true') {
-                    console.log('True');
+                    $scope.emailAvailable = false;
+                    $scope.formChange = !$scope.formChange;
                     return true;
                 } else if (response.data.exists === 'false') {
-                    console.log('False');
+                    $scope.emailAvailable = true;
+                    $scope.formChange = !$scope.formChange;
                     return false;
                 } else {
-                    console.log('Error!');
+                    $scope.emailAvailable = false;
+                    $scope.formChange = !$scope.formChange;
                     return true;
                 }
             });
-
     };
 
-    $scope.passwordMatch = function () {
-        return $scope.user.password === $scope.user.confirmPassword;
+    var isPasswordMatch = function () {
+        if ($scope.user.password && $scope.user.confirmpassword) {
+            $scope.passwordMatch = $scope.user.password.localeCompare($scope.user.confirmpassword) === 0 ? true : false;
+        } else {
+            $scope.passwordMatch = false;
+        }
     };
 
-    $scope.signupSubmit = function () {
+    $scope.$watch('user.displayname', function (newValue, oldValue) {
+        if ($scope.user.displayname && $scope.user.displayname.length >= 1) {
+            $scope.displaynameValid = true;
+        } else {
+            $scope.displaynameValid = false;
+        }
+        $scope.formChange = !$scope.formChange;
+    }, true);
 
+    $scope.$watch('user.username', function (newValue, oldValue) {
+        if ($scope.user.username && $scope.user.username.length >= 4) {
+            usernameExists();
+        } else {
+            $scope.usernameAvailable = false;
+        }
+        $scope.formChange = !$scope.formChange;
+    }, true);
+
+    $scope.$watch('user.email', function (newValue, oldValue) {
+        if ($scope.user.email) {
+            emailExists();
+        } else {
+            $scope.emailAvailable = false;
+        }
+        $scope.formChange = !$scope.formChange;
+    }, true);
+
+    $scope.$watch('user.password', function (newValue, oldVale) {
+        if ($scope.user.password && $scope.user.password.length > 5) {
+            isPasswordMatch();
+        }
+        $scope.formChange = !$scope.formChange;
+
+    }, true);
+
+    $scope.$watch('user.confirmpassword', function (newValue, oldVale) {
+        if ($scope.user.password && $scope.user.password.length > 5) {
+            isPasswordMatch();
+        }
+        $scope.formChange = !$scope.formChange;
+    }, true);
+
+    $scope.$watch('formChange', function (newValue, oldVale) {
         console.log($scope.user);
+        console.log($scope.usernameAvailable);
+        console.log($scope.emailAvailable);
+        console.log($scope.passwordMatch);
 
-        if ($scope.emailExists()) {
-            console.log('Email Exists');
+        if ($scope.usernameAvailable && $scope.emailAvailable && $scope.passwordMatch) {
+            $scope.validForm = true;
+        } else {
+            $scope.validForm = false;
         }
-        if ($scope.usernameExists()) {
-            console.log('Username Exists');
-        }
-        /*    if ($scope.passwordMatch()) {
-                console.log('Passwords Match!');
-            }
-        */
-    };
+    }, true);
 }]);
