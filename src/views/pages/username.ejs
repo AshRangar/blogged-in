@@ -14,7 +14,7 @@
         <% include ../partials/header.ejs %>
             <% include ../partials/flash.ejs %>
 
-                <div class="container">
+                <div class="container" ng-app='app' ng-controller='UsernameController'>
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="panel panel-login">
@@ -30,14 +30,21 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <form id="login-form" action="/auth/username" method="post" role="form" style="display: block;">
-                                                <div class="form-group">
-                                                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+
+                                                <div class="form-group" ng-class="{ 'has-error' : usernameForm.username.$invalid || !usernameAvailable}">
+                                                    <ng-form name="usernameForm">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" id="username" placeholder="Username" name="username" ng-model="user.username" ng-minlength="4" ng-maxlength="32" required>
+                                                            <p class="help-block" ng-show="usernameForm.username.$invalid">Username must have atleast 4 characters</p>
+                                                            <p class="help-block" ng-show="usernameForm.username.$valid && !usernameAvailable">Username Not Available</p>
+                                                        </div>
+                                                    </ng-form>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-sm-6 col-sm-offset-3">
-                                                            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Create Profile!">
+                                                            <input type="submit" ng-disabled="!usernameAvailable" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Create Profile!">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -53,6 +60,12 @@
 
                 <% include ../partials/footer.ejs %>
                     <% include ../partials/js.ejs %>
+
+                        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+                        <script src="/js/app/app.js"></script>
+                        <script src="/js/app/controllers/usernameController.js"></script>
+
 </body>
 
 </html>
