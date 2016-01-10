@@ -34,12 +34,14 @@ module.exports = () => {
             post.authorUsername = req.user.username;
 
             post.save((err) => {
-                //Needs to print the error!
                 if (err) {
-                    console.log('Error. Couldn\'t add blog to database');
+                    req.flash('error', 'Error! Couldn\'t save the post');
+                    res.redirect('/my/newpost');
+                } else {
+                    req.flash('notice', 'Congratulations! Your post has been added.');
                     res.redirect('/my/newpost');
                 }
-                res.redirect('/my/newpost');
+
             });
         });
 
