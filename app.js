@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
 var flash = require('connect-flash');
+var flashMiddleware = require('./src/middleware/connectflash.middleware.js');
 
 var port = process.env.PORT || 3000;
 
@@ -25,6 +26,7 @@ app.use(session({
 }));
 
 app.use(flash());
+app.use(flashMiddleware);
 
 require('./src/config/passport.js')(app);
 
