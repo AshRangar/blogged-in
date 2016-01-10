@@ -26,6 +26,7 @@ module.exports = () => {
     authRouter.route('/signOut')
         .get(function (req, res) {
             req.logout();
+            req.flash('notice', 'You\'ve been logged out successfully');
             res.redirect('/');
         });
 
