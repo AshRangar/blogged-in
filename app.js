@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
+var flash = require('connect-flash');
 
 var port = process.env.PORT || 3000;
 
@@ -22,6 +23,8 @@ app.use(cookieParser());
 app.use(session({
     secret: 'BloggedInSession'
 }));
+
+app.use(flash());
 
 require('./src/config/passport.js')(app);
 
