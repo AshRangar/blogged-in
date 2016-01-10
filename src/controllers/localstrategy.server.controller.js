@@ -9,6 +9,7 @@ var localStrategyController = () => {
             if (user && user.validPassword(req.body.password)) {
                 return done(null, user);
             } else {
+                req.flash('error', 'Invalid username/password!');
                 return done(null, false, {
                     message: 'Bad username/password combo'
                 });

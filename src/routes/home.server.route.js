@@ -16,7 +16,8 @@ module.exports = () => {
         .get((req, res) => {
             res.render('pages/login', {
                 nav: nav,
-                info: info
+                info: info,
+                flash: req.flash()
             });
         });
 

@@ -13,146 +13,154 @@
     <% include ../partials/navbar.ejs %>
         <% include ../partials/header.ejs %>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <div class="panel panel-login">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <a href="#" class="active" id="login-form-link">Login</a>
+            <%if (flash && flash.error ){%>
+                <div class="col-md-6 col-md-offset-3">
+                    <p class="alert alert-danger">
+                        <%=flash.error %>
+                    </p>
+                </div>
+                <%}%>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="panel panel-login">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <a href="#" class="active" id="login-form-link">Login</a>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <a href="#" id="register-form-link">Register</a>
+                                            </div>
+                                        </div>
+                                        <hr>
                                     </div>
-                                    <div class="col-xs-6">
-                                        <a href="#" id="register-form-link">Register</a>
-                                    </div>
-                                </div>
-                                <hr>
-                            </div>
-                            <div class="panel-body" ng-controller="SignupController">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <form id="login-form" action="/auth/signin" method="post" role="form" style="display: block;" validate>
-                                            <div class="form-group">
-                                                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
-                                            </div>
-                                            <div class="form-group text-center">
-                                                <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                                                <label for="remember"> Remember Me</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-sm-offset-3">
-                                                        <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                    <div class="panel-body" ng-controller="SignupController">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <form id="login-form" action="/auth/signin" method="post" role="form" style="display: block;" validate>
+                                                    <div class="form-group">
+                                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </form>
-
-                                        <form class="form-horizontal" id="registerForm" role="form" style="display: none;" action="auth/signup" method="post" novalidate>
-                                            <div class="form-group" ng-class="{ 'has-error' : displaynameForm.displayname.$invalid }">
-                                                <ng-form name="displaynameForm">
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" id="displayName" name="displayname" placeholder="Full name" ng-model="user.displayname" required>
-                                                        <p class="help-block" ng-show="displaynameForm.displayname.$invalid">Full Name Required</p>
+                                                    <div class="form-group">
+                                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
                                                     </div>
-                                                </ng-form>
-                                            </div>
-
-                                            <div class="form-group" ng-class="{ 'has-error' : emailForm.email.$invalid || !emailAvailable}">
-                                                <ng-form name="emailForm">
-                                                    <div class="col-sm-12">
-                                                        <input type="email" class="form-control" placeholder="Email" name="email" ng-model="user.email" required>
-                                                        <p class="help-block" ng-show="emailForm.email.$invalid">Valid Email Address Required</p>
-                                                        <p class="help-block" ng-show="emailForm.email.$valid && !emailAvailable">Email Not Availble</p>
+                                                    <div class="form-group text-center">
+                                                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                                                        <label for="remember"> Remember Me</label>
                                                     </div>
-                                                </ng-form>
-                                            </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-6 col-sm-offset-3">
+                                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
 
-                                            <div class="form-group" ng-class="{ 'has-error' : usernameForm.username.$invalid || !usernameAvailable}">
-                                                <ng-form name="usernameForm">
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" id="username" placeholder="Username" name="username" ng-model="user.username" ng-minlength="4" ng-maxlength="32" required>
-                                                        <p class="help-block" ng-show="usernameForm.username.$invalid">Username must have atleast 4 characters</p>
-                                                        <p class="help-block" ng-show="usernameForm.username.$valid && !usernameAvailable">Username Not Available</p>
+                                                <form class="form-horizontal" id="registerForm" role="form" style="display: none;" action="auth/signup" method="post" novalidate>
+                                                    <div class="form-group" ng-class="{ 'has-error' : displaynameForm.displayname.$invalid }">
+                                                        <ng-form name="displaynameForm">
+                                                            <div class="col-sm-12">
+                                                                <input type="text" class="form-control" id="displayName" name="displayname" placeholder="Full name" ng-model="user.displayname" required>
+                                                                <p class="help-block" ng-show="displaynameForm.displayname.$invalid">Full Name Required</p>
+                                                            </div>
+                                                        </ng-form>
                                                     </div>
 
-                                                </ng-form>
-                                            </div>
-
-                                            <div class="form-group" ng-class="{ 'has-error' : passwordForm.password.$invalid }">
-                                                <ng-form name="passwordForm">
-                                                    <div class="col-sm-12">
-                                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="user.password" ng-minlength="6" required>
-                                                        <p class="help-block" ng-show="passwordForm.password.$invalid">Password must have atleast 6 characters</p>
+                                                    <div class="form-group" ng-class="{ 'has-error' : emailForm.email.$invalid || !emailAvailable}">
+                                                        <ng-form name="emailForm">
+                                                            <div class="col-sm-12">
+                                                                <input type="email" class="form-control" placeholder="Email" name="email" ng-model="user.email" required>
+                                                                <p class="help-block" ng-show="emailForm.email.$invalid">Valid Email Address Required</p>
+                                                                <p class="help-block" ng-show="emailForm.email.$valid && !emailAvailable">Email Not Availble</p>
+                                                            </div>
+                                                        </ng-form>
                                                     </div>
-                                                </ng-form>
-                                            </div>
 
-                                            <div class="form-group" ng-class="{ 'has-error' : !passwordMatch }">
-                                                <ng-form name="confirmpasswordForm">
-                                                    <div class="col-sm-12">
-                                                        <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" ng-model="user.confirmpassword" required>
-                                                        <p class="help-block" ng-show="!passwordMatch">Doesn't match password</p>
+                                                    <div class="form-group" ng-class="{ 'has-error' : usernameForm.username.$invalid || !usernameAvailable}">
+                                                        <ng-form name="usernameForm">
+                                                            <div class="col-sm-12">
+                                                                <input type="text" class="form-control" id="username" placeholder="Username" name="username" ng-model="user.username" ng-minlength="4" ng-maxlength="32" required>
+                                                                <p class="help-block" ng-show="usernameForm.username.$invalid">Username must have atleast 4 characters</p>
+                                                                <p class="help-block" ng-show="usernameForm.username.$valid && !usernameAvailable">Username Not Available</p>
+                                                            </div>
+
+                                                        </ng-form>
                                                     </div>
-                                                </ng-form>
-                                            </div>
 
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-sm-offset-3">
-                                                        <input type="submit" value="Register" ng-disabled="!validForm" tabindex="4" class="form-control btn btn-login" />
+                                                    <div class="form-group" ng-class="{ 'has-error' : passwordForm.password.$invalid }">
+                                                        <ng-form name="passwordForm">
+                                                            <div class="col-sm-12">
+                                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="user.password" ng-minlength="6" required>
+                                                                <p class="help-block" ng-show="passwordForm.password.$invalid">Password must have atleast 6 characters</p>
+                                                            </div>
+                                                        </ng-form>
                                                     </div>
-                                                </div>
-                                            </div>
 
-                                        </form>
+                                                    <div class="form-group" ng-class="{ 'has-error' : !passwordMatch }">
+                                                        <ng-form name="confirmpasswordForm">
+                                                            <div class="col-sm-12">
+                                                                <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" ng-model="user.confirmpassword" required>
+                                                                <p class="help-block" ng-show="!passwordMatch">Doesn't match password</p>
+                                                            </div>
+                                                        </ng-form>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-6 col-sm-offset-3">
+                                                                <input type="submit" value="Register" ng-disabled="!validForm" tabindex="4" class="form-control btn btn-login" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
 
 
-                                        <ul class="list-inline text-center">
-                                            <li>
-                                                <a href="/auth/twitter">
-                                                    <span class="fa-stack fa-lg">
+                                                <ul class="list-inline text-center">
+                                                    <li>
+                                                        <a href="/auth/twitter">
+                                                            <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                                 </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/auth/facebook">
-                                                    <span class="fa-stack fa-lg">
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/auth/facebook">
+                                                            <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                                 </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/auth/google">
-                                                    <span class=" fa-stack fa-lg ">
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/auth/google">
+                                                            <span class=" fa-stack fa-lg ">
                                     <i class="fa fa-circle fa-stack-2x "></i>
                                     <i class="fa fa-google fa-stack-1x fa-inverse "></i>
                                 </span>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <% include ../partials/footer.ejs %>
-                <% include ../partials/js.ejs %>
-                    <script src="/js/login.js"></script>
+                    <% include ../partials/footer.ejs %>
+                        <% include ../partials/js.ejs %>
+                            <script src="/js/login.js"></script>
 
-                    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+                            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 
-                    <script src="/js/app/app.js"></script>
-                    <script src="/js/app/controllers/signupController.js"></script>
+                            <script src="/js/app/app.js"></script>
+                            <script src="/js/app/controllers/signupController.js"></script>
 
 </body>
 
