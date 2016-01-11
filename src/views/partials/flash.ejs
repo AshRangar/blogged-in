@@ -1,6 +1,6 @@
 <%if (flash && flash.error && flash.error.length > 0){%>
     <div class="col-md-6 col-md-offset-3">
-        <p class="alert alert-danger">
+        <p class="alert alert-danger text-center">
             <%=flash.error %>
         </p>
     </div>
@@ -8,7 +8,7 @@
 
         <%if (flash && flash.notice && flash.notice.length > 0){%>
             <div class="col-md-6 col-md-offset-3">
-                <p class="alert alert-success">
+                <p class="alert alert-success text-center">
                     <%=flash.notice %>
                 </p>
             </div>
