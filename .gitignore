@@ -2,8 +2,5 @@ src/.DS_Store
 
 TODO
 
-src/config/db.config.js
-
-src/config/auth.config.js
-
 node_modules/
+src/config/.config
