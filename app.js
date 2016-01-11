@@ -7,7 +7,11 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var flashMiddleware = require('./src/middleware/connectflash.middleware.js');
 
-var port = process.env.PORT || 3000;
+var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
+//var ip = process.env.OPENSHIFT_NODEJS_IP || process.env.ip || '127.0.0.1';
+
+app.set('port', port);
+//app.set(ip);
 
 var mongoose = require('mongoose');
 var dbConfig = require('./src/config/db.config.js')();
@@ -48,6 +52,6 @@ app.use('/users', usersRouter);
 var blogsRouter = require('./src/routes/posts.server.route.js')();
 app.use('/posts', blogsRouter);
 
-app.listen(port, () => {
+app.listen(app.get('port'), function () {
     console.log('Listening on port ' + port);
 });
