@@ -4,7 +4,7 @@ module.exports = function () {
         authorlink: 'https://github.com/AshRangar/blogged-in',
         navtitle: 'Bloggedin',
         heading: 'Bloggedin',
-        subheading: 'Built using Express.Js',
+        subheading: 'Created by Ashwin Rangarajan',
         copyright: 'Ashwin Rangarajan',
         copyrightlink: 'http://AshRangar.com',
         background: '/img/red-cube.jpg'
