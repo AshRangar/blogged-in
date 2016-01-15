@@ -19,7 +19,18 @@
                     <div class="container">
                         <div class="post-preview">
 
+                            <a href="/my/post/edit/" class="btn btn-info btn-md">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+
+                            <a href="/my/post/delete/" class="btn btn-danger btn-md">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+
+
+
                             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
                                 <p>
                                     <%=post.content%>
                                 </p>
@@ -31,7 +42,6 @@
                                     <%var date = post._id.getTimestamp().toDateString()%>
                                         <%=date.substr(date.indexOf(' ')+1);%>
                                 </p>
-
 
                             </div>
                         </div>
