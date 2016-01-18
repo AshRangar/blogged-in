@@ -56,7 +56,7 @@ module.exports = () => {
                     }
 
                     info.heading = post.title;
-                    info.subheading = post.caption;
+                    info.subheading = post.subtitle;
                     res.render('pages/post', {
                         nav: nav,
                         info: info,
