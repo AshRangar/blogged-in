@@ -13,7 +13,7 @@
     <% include ../partials/navbar.ejs %>
         <% include ../partials/header.ejs %>
             <% include ../partials/flash.ejs %>
-    
+
                 <!-- Main Content -->
                 <div class="container">
                     <div class="row">
@@ -21,19 +21,19 @@
                             <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
                             <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
                             <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-                            <form action="/my/newpost" method="post" role="form" name="newpostform" id="newpostform" novalidate>
+                            <form action="<%=action%>" method="post" role="form" name="newpostform" id="newpostform" novalidate>
                                 <div class="row control-group">
                                     <div class="form-group col-xs-12 floating-label-form-group controls">
                                         <label>Title</label>
-                                        <input type="text" class="form-control" name="title" placeholder="Title" id="title" required data-validation-required-message="Enter the title of the blog post.">
+                                        <input type="text" class="form-control" name="title" placeholder="Title" id="title" value="<%=post.title%>" required data-validation-required-message="Enter the title of the blog post.">
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
 
                                 <div class="row control-group">
                                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                                        <label>Title</label>
-                                        <input type="text" class="form-control" name="subtitle" placeholder="Subtitle" id="subtitle" required data-validation-required-message="Enter the subtitle of the blog post.">
+                                        <label>Subtitle</label>
+                                        <input type="text" class="form-control" name="subtitle" placeholder="Subtitle" id="subtitle" value="<%=post.subtitle%>" required data-validation-required-message="Enter the subtitle of the blog post.">
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
@@ -41,7 +41,9 @@
                                 <div class="row control-group">
                                     <div class="form-group col-xs-12 floating-label-form-group controls">
                                         <label>Content</label>
-                                        <textarea rows="13" class="form-control" name="content" placeholder="Content" id="content" required data-validation-required-message="Enter the content of the blog post."></textarea>
+                                        <textarea rows="13" class="form-control" name="content" placeholder="Content" id="content" required data-validation-required-message="Enter the content of the blog post.">
+                                            <%=post.content%>
+                                        </textarea>
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
