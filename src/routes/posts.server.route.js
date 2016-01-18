@@ -33,15 +33,35 @@ module.exports = () => {
         });
 
     blogsRouter.route('/:id')
+        .all(function (req, res, next) {
+            if (req.user) {
+                nav[nav.length - 1].item = 'Logout';
+                nav[nav.length - 1].link = '/auth/signOut';
+            } else {
+                nav[nav.length - 1].item = 'Login';
+                nav[nav.length - 1].link = '/';
+            }
+            next();
+        })
         .get(function (req, res, next) {
             Post.findById(req.params.id, function (err, post) {
                 if (!err) {
+                    var isUserAuthor = false;
+
+                    console.log(req.user);
+                    console.log(post.authorId);
+
+                    if (req.user && req.user._id == post.authorId) {
+                        isUserAuthor = true;
+                    }
+
                     info.heading = post.title;
                     info.subheading = post.caption;
                     res.render('pages/post', {
                         nav: nav,
                         info: info,
-                        post: post
+                        post: post,
+                        isUserAuthor: isUserAuthor
                     });
                 } else {
                     res.send('Error!');
