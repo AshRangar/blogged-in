@@ -2,6 +2,7 @@ var express = require('express');
 var myRouter = express.Router();
 
 var Post = require('../models/post.server.model.js');
+var User = require('../models/user.server.model.js');
 
 var info = require('../config/info.config.js')();
 var nav = require('../config/nav.config.js')();
@@ -71,6 +72,72 @@ module.exports = () => {
                     });
                 } else {
                     res.send('Error!');
+                }
+            });
+        });
+
+
+    //Check if the user is the author. Otherwise display an error message
+    myRouter.route('/post')
+        .all(function (req, res, next) {
+            if (req.user) {
+                next();
+            } else {
+                req.flash('error', 'Please sign in to access this page!');
+                res.redirect('/');
+            }
+        });
+
+    myRouter.route('/post/edit/:id')
+        .all(function (req, res, next) {
+            var query = {
+                _id: req.params.id
+            };
+            Post.findOne(query, function (err, post) {
+                if (!err) {
+                    if (req.user && post.authorId == req.user._id) {
+                        next();
+                    } else {
+                        req.flash('error', 'The operation could not be processed!');
+                        res.redirect('/');
+                    }
+                } else {
+                    req.flash('error', 'The operation could not be processed!');
+                    res.redirect('/');
+                }
+            });
+        })
+        .get(function (req, res, next) {
+            res.send('Editing the post');
+        })
+        .post(function (req, res, next) {
+
+        });
+
+    myRouter.route('/post/delete/:id')
+        .get(function (req, res, next) {
+            var query = {
+                _id: req.params.id
+            };
+            Post.findOne(query, function (err, post) {
+                if (!err) {
+                    if (req.user && post.authorId == req.user._id) {
+                        post.remove(function (err, post) {
+                            if (!err) {
+                                req.flash('notice', 'The post was deleted successfully!');
+                                res.redirect('/my/posts');
+                            } else {
+                                req.flash('error', 'Sorry the post could not be deleted!');
+                                res.redirect('/');
+                            }
+                        });
+                    } else {
+                        req.flash('error', 'The operation could not be processed!');
+                        res.redirect('/');
+                    }
+                } else {
+                    req.flash('error', 'The operation could not be processed!');
+                    res.redirect('/');
                 }
             });
         });
