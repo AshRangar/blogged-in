@@ -21,11 +21,11 @@
 
                             <%if(isUserAuthor){%>
 
-                                <a href="/my/post/edit/" class="btn btn-info btn-md">
+                                <a href="/my/post/edit/<%=post._id%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit"></span>
                                 </a>
 
-                                <a href="/my/post/delete/" class="btn btn-danger btn-md">
+                                <a href="/my/post/delete/<%=post._id%>" class="btn btn-danger btn-md">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
 
