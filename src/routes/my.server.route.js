@@ -21,9 +21,17 @@ module.exports = () => {
         .get(function (req, res) {
             info.heading = 'NEW POST';
             info.subheading = req.user.username;
+            var post = {
+                title: '',
+                subtitle: '',
+                content: ''
+            };
+
             res.render('pages/newpost', {
                 nav: nav,
-                info: info
+                info: info,
+                post: post,
+                action: '/my/newpost'
             });
         })
         .post(function (req, res) {
@@ -96,6 +104,7 @@ module.exports = () => {
             Post.findOne(query, function (err, post) {
                 if (!err) {
                     if (req.user && post.authorId == req.user._id) {
+                        req.post = post;
                         next();
                     } else {
                         req.flash('error', 'The operation could not be processed!');
@@ -108,10 +117,33 @@ module.exports = () => {
             });
         })
         .get(function (req, res, next) {
-            res.send('Editing the post');
+            var post = req.post;
+            res.render('pages/newpost', {
+                nav: nav,
+                info: info,
+                post: post,
+                action: '/my/post/edit/' + post._id
+            });
         })
         .post(function (req, res, next) {
+            var post = req.post;
 
+            post.title = req.body.title;
+            post.subtitle = req.body.subtitle;
+            post.content = req.body.content;
+            post.authorId = req.user._id;
+            post.authorUsername = req.user.username;
+
+            post.save((err) => {
+                if (err) {
+                    req.flash('error', 'Error! Couldn\'t update the post');
+                    res.redirect('/posts/' + req.params.id);
+                } else {
+                    req.flash('notice', 'Congratulations! Your post has been updated.');
+                    res.redirect('/posts/' + req.params.id);
+                }
+
+            });
         });
 
     myRouter.route('/post/delete/:id')
