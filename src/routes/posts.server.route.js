@@ -45,7 +45,7 @@ module.exports = () => {
         })
         .get(function (req, res, next) {
             Post.findById(req.params.id, function (err, post) {
-                if (!err) {
+                if (!err && post) {
                     var isUserAuthor = false;
 
                     console.log(req.user);
@@ -64,7 +64,8 @@ module.exports = () => {
                         isUserAuthor: isUserAuthor
                     });
                 } else {
-                    res.send('Error!');
+                    req.flash('error', 'Error! Can\'t access the requested content');
+                    res.redirect('/');
                 }
             });
         });
