@@ -33,6 +33,22 @@ module.exports = () => {
         });
 
     userRouter.route('/:id')
+        .all(function (req, res, next) {
+
+            var query = {
+                _id: req.params.id
+            };
+
+            User.findOne(query, function (err, user) {
+                if (user) {
+                    req.username = user.username;
+                    next();
+                } else {
+                    req.flash('error', 'Error! Couldn\'t find the user');
+                    res.redirect('users');
+                }
+            });
+        })
         .get(function (req, res) {
             var query = {
                 authorId: req.params.id
@@ -40,7 +56,7 @@ module.exports = () => {
 
             Post.find(query, function (err, posts) {
                 if (!err) {
-                    info.heading = '';
+                    info.heading = req.username;
                     info.subheading = 'Posts';
                     res.render('pages/allposts', {
                         nav: nav,
