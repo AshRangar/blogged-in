@@ -72,7 +72,7 @@ module.exports = () => {
                 };
                 User.findOne(query, function (err, user) {
                     if (!err) {
-                        user.username = req.body.username;
+                        user.username = req.body.username.toLowerCase();
                         user.save();
                         req.flash('notice', 'Congratulations. Your new account has been created!');
                         res.redirect('/my/posts');
@@ -91,7 +91,7 @@ module.exports = () => {
     authRouter.route('/username/:username')
         .get(function (req, res, next) {
             var query = {
-                username: req.params.username
+                username: req.params.username.toLowerCase()
             };
             User.findOne(query, function (err, user) {
                 if (err) {
@@ -115,7 +115,7 @@ module.exports = () => {
     authRouter.route('/email/:email')
         .get(function (req, res, next) {
             var query = {
-                email: req.params.email
+                email: req.params.email.toLowerCase()
             };
             User.findOne(query, function (err, user) {
                 if (err) {
