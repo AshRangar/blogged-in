@@ -48,9 +48,6 @@ module.exports = () => {
                 if (!err && post) {
                     var isUserAuthor = false;
 
-                    console.log(req.user);
-                    console.log(post.authorId);
-
                     if (req.user && req.user._id == post.authorId) {
                         isUserAuthor = true;
                     }
