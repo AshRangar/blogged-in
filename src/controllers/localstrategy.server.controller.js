@@ -19,9 +19,9 @@ var localStrategyController = () => {
 
     var authenticateSignup = (req, username, password, done) => {
         var user = new User;
-        user.username = req.body.username;
+        user.username = req.body.username.toLowerCase();
         user.password = user.generateHash(req.body.password);
-        user.email = req.body.email;
+        user.email = req.body.email.toLowerCase();
         user.displayName = req.body.displayname;
         user.save(
             function (err) {
