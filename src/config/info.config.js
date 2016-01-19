@@ -6,7 +6,7 @@ module.exports = function () {
         heading: 'Bloggedin',
         subheading: 'Created by Ashwin Rangarajan',
         copyright: 'Ashwin Rangarajan',
-        copyrightlink: 'http://AshRangar.com',
+        copyrightlink: 'http://ashw.me',
         background: '/img/red-cube.jpg'
     };
 
