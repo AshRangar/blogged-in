@@ -10,13 +10,13 @@ Multi-user blog site
 
 Features: <br />
     Login: <br />
-        Login using Email, Facebook, Twitter or Google <br />
+        * Login using Email, Facebook, Twitter or Google <br />
     New Post: <br />
-        Create new post <br />
+        * Create new post <br />
     All Posts: <br />
-        Display all the posts of all the users <br />
+        * Display all the posts of all the users <br />
     All Users: <br />
-        Display all the users. Click on the user to view thier posts <br />
+        * Display all the users. Click on the user to view thier posts <br />
 
 How to run? <br />
 
