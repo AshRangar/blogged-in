@@ -21,13 +21,13 @@ How to run?
 1. Clone the project
 2. Navigate to the project folder using terminal and run the following command to install the required modules "npm modules"
 3. configure the environmental variables for the following
-    export GOOGLE_ID=XXX
-    export GOOGLE_SECRET=XXX
-    export TWITTER_ID=XXX
-    export TWITTER_SECRET=XXX
-    export FACEBOOK_ID=XXX
-    export FACEBOOK_SECRET=XXX
-    export DB_URL=mongodb://XXX
+    export GOOGLE_ID=XXX <br />
+    export GOOGLE_SECRET=XXX <br />
+    export TWITTER_ID=XXX <br />
+    export TWITTER_SECRET=XXX <br />
+    export FACEBOOK_ID=XXX <br />
+    export FACEBOOK_SECRET=XXX <br />
+    export DB_URL=mongodb://XXX <br />
     
     Replace XXX with the appropriate values. DB_URL should contain the value of the mongodb database URL. The other variables should contain the values of the OAuth values.
 4. Run the command "gulp serve" to start the node.js application
