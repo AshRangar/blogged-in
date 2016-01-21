@@ -1,4 +1,4 @@
-<h3> Multi-user blog site </h3>
+<h4> Multi-user blog site </h4>
 
 * Uses Express.js for routing.
 * Connects to Mongolab using Mongoose.
@@ -8,7 +8,7 @@
 * Allows authentication using Twitter, Facebook and Google.
 * Flashes messages to client using flash-connect.
 
-<h3> Features: <br /> </h3>
+<h5> Features: <br /> </h5>
 
 * Login: <br />
     &nbsp;&nbsp;&nbsp;Login using Email, Facebook, Twitter or Google <br />
@@ -21,7 +21,7 @@
 * Comments:
     &nbsp;&nbsp;&nbsp;Users can comment on any of the posts if they are signedin. Every post page lists the comments made on the post. <br />
     
-<h3> How to run? <br /> </h3>
+<h5> How to run? <br /> </h5>
 
 1. Clone the project
 2. Navigate to the project folder using terminal and run the following command to install the required modules "npm modules"
