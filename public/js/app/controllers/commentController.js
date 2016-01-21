@@ -4,4 +4,7 @@ angular.module('app').controller('CommentController', ['$scope', '$http', functi
 
     console.log('Post ID is ' + $scope.postId);
     console.log($scope.postId);
+    $scope.$watch('$scope.postId ', function () {
+        getComments();
+    });
 }]);
