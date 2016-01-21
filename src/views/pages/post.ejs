@@ -50,7 +50,7 @@
 
                         <div ng-controller='CommentController'>
                             <!-- Comments Begin -->
-                            <div class="post-preview">
+                            <div class="post-preview" ng-init="postId = '<%=post._id%>'; userSignedin=<%-userSignedin%>">
                                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                                     <div class="form-group">
                                         <form>
