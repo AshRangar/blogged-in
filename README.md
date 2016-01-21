@@ -10,14 +10,16 @@ Multi-user blog site
 
 Features: <br />
     Login: <br />
-    &nbsp;Login using Email, Facebook, Twitter or Google <br />
+    &nbsp;&nbsp;&nbsp;Login using Email, Facebook, Twitter or Google <br />
     New Post: <br />
-    &nbsp;Create new post <br />
-    All Posts: <br />
-    &nbsp;Display all the posts of all the users <br />
-    All Users: <br />
-    &nbsp;Display all the users. Click on the user to view thier posts <br />
-
+    &nbsp;&nbsp;&nbsp;Create new post <br />
+    Posts: <br />
+    &nbsp;&nbsp;&nbsp;Display all the posts of all the users <br />
+    Users: <br />
+    &nbsp;&nbsp;&nbsp;Display all the users. Click on the user to view thier posts <br />
+    Comments:
+    &nbsp;&nbsp;&nbsp;Users can comment on any of the posts if they are signedin. Every post page lists the comments made on the post. <br />
+    
 How to run? <br />
 
 1. Clone the project
