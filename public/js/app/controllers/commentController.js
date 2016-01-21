@@ -17,4 +17,21 @@ angular.module('app').controller('CommentController', ['$scope', '$http', functi
                 console.log($scope.comments);
             });
     };
+
+    $scope.addComment = function () {
+        var data = {
+            comment: $scope.com
+        };
+        $http.post(('/comments/' + $scope.postId), data)
+            .then(function (response) {
+                console.log(response);
+                if (response.data.success) {
+                    console.log('Success!');
+                    $scope.com = '';
+                    getComments();
+                } else {
+                    console.log('Error!');
+                }
+            });
+    };
 }]);
