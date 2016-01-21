@@ -52,6 +52,9 @@ app.use('/users', usersRouter);
 var blogsRouter = require('./src/routes/posts.server.route.js')();
 app.use('/posts', blogsRouter);
 
+var commentsRouter = require('./src/routes/comments.server.route.js')();
+app.use('/comments', commentsRouter);
+
 app.listen(app.get('port'), function () {
     console.log('Listening on port ' + port);
 });
