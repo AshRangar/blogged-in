@@ -58,7 +58,8 @@ module.exports = () => {
                         nav: nav,
                         info: info,
                         post: post,
-                        isUserAuthor: isUserAuthor
+                        isUserAuthor: isUserAuthor,
+                        userSignedin: req.user ? true : false
                     });
                 } else {
                     req.flash('error', 'Error! Can\'t access the requested content');
