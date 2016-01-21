@@ -9,6 +9,7 @@ Multi-user blog site
 * Flashes messages to client using flash-connect.
 
 Features: <br />
+
     Login: <br />
     &nbsp;&nbsp;&nbsp;Login using Email, Facebook, Twitter or Google <br />
     New Post: <br />
