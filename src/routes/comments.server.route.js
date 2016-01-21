@@ -22,3 +22,39 @@ module.exports = () => {
                 }
             });
         })
+        .post((req, res) => {
+            if (req.user) {
+
+                var comment = new Comment;
+                comment.authorId = req.user._id;
+                comment.authorUsername = req.user.username;
+                comment.comment = req.body.comment;
+                comment.postId = req.params.id;
+
+                //Check if id exists
+
+                comment.save(function (err) {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            message: 'can\'t connect to database'
+                        });
+                    } else {
+                        res.json({
+                            success: true,
+                            message: 'succesfully added the comment'
+                        });
+
+                    }
+                });
+
+            } else {
+                res.json({
+                    success: false,
+                    message: 'not signedin'
+                });
+            }
+        })
+
+    return commentsRouter;
+};
