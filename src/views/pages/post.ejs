@@ -74,9 +74,9 @@
                             <div class="post-preview">
                                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                                     <div class="form-group" ng-repeat='c in comments'>
-                                        <h5>
-                                            <a href="{{c.link}}">{{c.username}}</a>
-                                            on {{c.date | date}}</h5>
+                                        <p class="post-meta">
+                                            <a href="{{c.link}}">{{c.authorUsername}}</a> on {{c.time | date}}
+                                        </p>
                                         <blockquote>
                                             <p>{{c.comment}}</p>
                                         </blockquote>
