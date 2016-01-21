@@ -20,14 +20,14 @@
     &nbsp;&nbsp;&nbsp;Display all the posts of all the users <br />
 * Users: <br />
     &nbsp;&nbsp;&nbsp;Display all the users. Click on the user to view thier posts <br />
-* Comments:
+* Comments: <br />
     &nbsp;&nbsp;&nbsp;Users can comment on any of the posts if they are signedin. Every post page lists the comments made on the post. <br />
     
 <h5> How to run? <br /> </h5>
 
 1. Clone the project
 2. Navigate to the project folder using terminal and run the following command to install the required modules "npm modules"
-3. configure the environmental variables for the following
+3. Configure the environmental variables for the following
     
         export GOOGLE_ID=XXX <br />
         export GOOGLE_SECRET=XXX <br />
