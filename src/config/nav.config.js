@@ -9,11 +9,11 @@ module.exports = function () {
             link: '/my/newpost'
         },
         {
-            item: 'All Users',
+            item: 'Users',
             link: '/users/'
         },
         {
-            item: 'All Posts',
+            item: 'Posts',
             link: '/posts/'
         },
         {
