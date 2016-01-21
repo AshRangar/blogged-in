@@ -8,7 +8,7 @@
 
 </head>
 
-<body>
+<body ng-app='app'>
 
     <% include ../partials/navbar.ejs %>
         <% include ../partials/header.ejs %>
@@ -48,32 +48,55 @@
                                     </div>
                         </div>
 
-                        <div class="post-preview">
-                            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                                <div class="form-group">
-                                    <form>
-                                        <div class="row">
-                                            <div class="form-group col-xs-12">
-                                                <label for="comment">Comment:</label>
-                                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                        <div ng-controller='CommentController'>
+                            <!-- Comments Begin -->
+                            <div class="post-preview">
+                                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                                    <div class="form-group">
+                                        <form>
+                                            <div class="row">
+                                                <div class="form-group col-xs-12">
+                                                    <label for="comment">Comment:</label>
+                                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-xs-12">
-                                                <button type="submit" class="btn btn-default">Post</button>
+                                            <div class="row">
+                                                <div class="form-group col-xs-12">
+                                                    <button type="submit" class="btn btn-default">Post</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+
+                            <div class="post-preview">
+                                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                                    <div class="form-group" ng-repeat='c in comments'>
+                                        <h5>
+                                            <a href="{{c.link}}">{{c.username}}</a>
+                                            on {{c.date | date}}</h5>
+                                        <blockquote>
+                                            <p>{{c.comment}}</p>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
+                    <!-- Comments End -->
                 </article>
 
                 <hr>
                 <% include ../partials/footer.ejs %>
                     <% include ../partials/js.ejs %>
+
+                        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+                        <script src="/js/app/app.js"></script>
+                        <script src="/js/app/controllers/commentController.js"></script>
 
 </body>
 
