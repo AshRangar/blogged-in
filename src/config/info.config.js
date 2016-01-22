@@ -1,3 +1,4 @@
+//Returns info object with all the properties
 module.exports = function () {
     var info = {
         author: 'Bloggedin Github',
