@@ -5,7 +5,7 @@ var Comment = require('../models/comment.server.model.js');
 
 module.exports = () => {
     commentsRouter.route('/:id')
-        .get((req, res) => {
+        .get(function (req, res) {
             var query = {
                 postId: req.params.id
             };
@@ -22,7 +22,7 @@ module.exports = () => {
                 }
             });
         })
-        .post((req, res) => {
+        .post(function (req, res) {
             if (req.user) {
 
                 var comment = new Comment;
