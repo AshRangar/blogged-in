@@ -3,7 +3,7 @@ var commentsRouter = express.Router();
 
 var Comment = require('../models/comment.server.model.js');
 
-module.exports = () => {
+module.exports = function () {
     commentsRouter.route('/:id')
         .get(function (req, res) {
             var query = {
