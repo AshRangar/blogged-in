@@ -7,7 +7,7 @@ var nav = require('../config/nav.config.js')();
 
 var User = require('../models/user.server.model.js');
 
-module.exports = () => {
+module.exports = function () {
 
     authRouter.route('/signIn')
         .post(passport.authenticate('local.signin', {
