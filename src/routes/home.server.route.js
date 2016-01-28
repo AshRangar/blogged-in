@@ -6,7 +6,7 @@ var nav = require('../config/nav.config.js')();
 
 module.exports = function () {
     homeRouter.route('/')
-        .all((req, res, next) => {
+        .all(function (req, res, next) {
             if (req.user) {
                 nav[nav.length - 1].item = 'Log out';
                 nav[nav.length - 1].link = '/auth/signOut';
@@ -17,7 +17,7 @@ module.exports = function () {
                 next();
             }
         })
-        .get((req, res) => {
+        .get(function (req, res) {
             res.render('pages/login', {
                 nav: nav,
                 info: info
